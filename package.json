@@ -1,0 +1,28 @@
+{
+    "name":                 "mingle",
+    "description":          "Minimalist service discovery for hosted Node.js applications.",
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "version":              "9.9.9",
+    "keywords":
+    [
+                            "ssdp", "discovery"
+    ],
+    "license":              "MIT",
+    "homepage":             "https://github.com/bigeasy/mingle",
+    "repository":
+    {
+                            "url": "git://github.com/bigeasy/mingle.git",
+                            "type": "git"
+    },
+    "main":                 "mingle.js",
+    "dependencies":
+    {},
+    "devDependencies":
+    {
+                            "proof": "0.0.56"
+    },
+    "scripts":
+    {
+                            "test": "proof platform win32 && proof */*/*.t.js || t/test"
+    }
+}
