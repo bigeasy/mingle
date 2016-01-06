@@ -16,10 +16,13 @@
     },
     "main":                 "mingle.js",
     "dependencies":
-    {},
+    {
+                            "cadence":      "0.4.3",
+                            "inlet":        "0.4.3"
+    },
     "devDependencies":
     {
-                            "proof": "0.0.57"
+                            "proof":        "0.0.57"
     },
     "scripts":
     {
