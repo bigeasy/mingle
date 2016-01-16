@@ -14,7 +14,6 @@
                             "url": "git://github.com/bigeasy/mingle.git",
                             "type": "git"
     },
-    "main":                 "mingle.js",
     "dependencies":
     {
                             "cadence":      "0.4.3",
