@@ -1,8 +1,14 @@
 var cadence = require('cadence')
 var assert = require('assert')
+var Dispatcher = require('inlet/dispatcher')
 
 function Balanced () {
     this._listings = []
+    var dispatcher = new Dispatcher(this)
+    dispatcher.dispatch('GET /', 'index')
+    dispatcher.dispatch('GET /health', 'health')
+    dispatcher.dispatch('POST /post', 'post')
+    this.dispatcher = dispatcher
 }
 
 Balanced.prototype.index = cadence(function (async) {

@@ -16,12 +16,14 @@
     },
     "dependencies":
     {
+                            "arguable":     "0.0.41",
                             "cadence":      "0.4.3",
                             "inlet":        "0.4.3"
     },
     "devDependencies":
     {
-                            "proof":        "0.0.57"
+                            "proof":        "0.0.57",
+                            "vizsla":       "0.0.10"
     },
     "scripts":
     {
