@@ -1,5 +1,6 @@
 /node_modules
 /*/node_modules/*
+!/mingle.root/node_modules/mingle.test.js
 !/mingle.supervisor/node_modules/mingle.test.js
 /.todo.txt
 /.proof.out
