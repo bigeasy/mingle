@@ -1,0 +1,37 @@
+{
+    "name":             "mingle",
+    "version":          "9.9.9",
+    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
+    "description":      "Root executable for standard Mingle processes.",
+    "keywords":
+    [
+                        "consensus", "discovery"
+    ],
+    "license":          "MIT",
+    "contributors":     [],
+    "homepage":         "https://github.com/bigeasy/mingle",
+    "bugs":             "https://github.com/bigeasy/mingle/issues",
+    "main":             "supervisor",
+    "repository":
+    {
+                        "type": "git",
+                        "url": "http://github.com/bigeasy/mingle.git"
+    },
+    "bin":
+    {
+                        "mingle":             "./supervisor.js"
+    },
+    "dependencies":
+    {
+                        "arguable":             "2.x",
+                        "cadence":              "1.x"
+    },
+    "devDependencies":
+    {
+                        "proof":                "1.x"
+    },
+    "scripts":
+    {
+                        "test": "proof test t/*.t.js"
+    }
+}

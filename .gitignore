@@ -1,4 +1,6 @@
 /node_modules
+/*/node_modules/*
+!/mingle.supervisor/node_modules/mingle.test.js
 /.todo.txt
 /.proof.out
 /coverage
