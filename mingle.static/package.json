@@ -1,6 +1,6 @@
 {
-    "name":             "mingle",
-    "version":          "9.9.9",
+    "name":             "mingle.static",
+    "version":          "0.0.0",
     "description":      "Root executable for standard Mingle processes.",
     "keywords":
     [
