@@ -11,7 +11,7 @@ function Static (addresses) {
 }
 
 Static.prototype.index = cadence(function () {
-    return 'Mingle Static Discovery'
+    return 'Mingle Static Discovery API'
 })
 
 Static.prototype.discover = cadence(function () {
