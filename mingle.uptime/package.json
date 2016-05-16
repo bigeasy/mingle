@@ -1,0 +1,31 @@
+{
+    "name":             "mingle.uptime",
+    "version":          "9.9.9",
+    "description":      "Uptime client for Mingle discovery servers.",
+    "keywords":
+    [
+                        "consensus", "discovery"
+    ],
+    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors":     [],
+    "license":          "MIT",
+    "homepage":         "https://github.com/bigeasy/mingle",
+    "bugs":             "https://github.com/bigeasy/mingle/issues",
+    "repository":
+    {
+                        "type": "git",
+                        "url": "http://github.com/bigeasy/mingle.git"
+    },
+    "dependencies":
+    {
+    },
+    "devDependencies":
+    {
+                        "proof":                "1.x"
+    },
+    "main":             "uptime",
+    "scripts":
+    {
+                        "test": "proof test t/*.t.js"
+    }
+}
