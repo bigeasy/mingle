@@ -8,9 +8,9 @@
     ],
     "author":           "Alan Gutierrez <alan@prettyrobots.com>",
     "contributors":     [],
-    "license":          "MIT",
     "homepage":         "https://github.com/bigeasy/mingle",
     "bugs":             "https://github.com/bigeasy/mingle/issues",
+    "license":          "MIT",
     "repository":
     {
                         "type": "git",
