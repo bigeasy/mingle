@@ -34,13 +34,11 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var bind = program.command.bind('bind')
 
-    async(function () {
-        Shuttle.shuttle(program, 1000, {}, logger, async())
-    }, function () {
-        var resolver = new Resolver(program.command.param.name)
-        var dispatcher = resolver.dispatcher.createWrappedDispatcher()
-        var server = http.createServer(dispatcher)
-        server.listen(bind.port, bind.address, async())
-        program.on('SIGINT', server.close.bind(server))
-    })
+    Shuttle.shuttle(program, 1000, logger)
+
+    var resolver = new Resolver(program.command.param.name)
+    var dispatcher = resolver.dispatcher.createWrappedDispatcher()
+    var server = http.createServer(dispatcher)
+    server.listen(bind.port, bind.address, async())
+    program.on('SIGINT', server.close.bind(server))
 }))

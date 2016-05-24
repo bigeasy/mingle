@@ -25,18 +25,16 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var logger = prolific.createLogger('bigeasy.mingle.static.bin')
 
+    Shuttle.shuttle(program, 1000, logger)
+
     program.helpIf(program.command.param.help)
     program.command.required('bind')
 
     var bind = program.command.bind('bind')
 
-    async(function () {
-        Shuttle.shuttle(program, 1000, {}, logger, async())
-    }, function () {
-        var mingle = new Static(program.argv)
-        var dispatcher = mingle.dispatcher.createWrappedDispatcher()
-        var server = http.createServer(dispatcher)
-        server.listen(bind.port, bind.address, async())
-        program.on('SIGINT', server.close.bind(server))
-    })
+    var mingle = new Static(program.argv)
+    var dispatcher = mingle.dispatcher.createWrappedDispatcher()
+    var server = http.createServer(dispatcher)
+    server.listen(bind.port, bind.address, async())
+    program.on('SIGINT', server.close.bind(server))
 }))
