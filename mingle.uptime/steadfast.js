@@ -3,6 +3,7 @@ function unhealthy (machines) {
         return machine == null || machine.health == null || machine.health.instanceId == null
     }).length != 0
 }
+
 function sort (machines) {
     return machines.map(function (machine) {
         return String(machine.health.instanceId)

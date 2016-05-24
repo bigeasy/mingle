@@ -1,4 +1,4 @@
-require('proof')(4, require('cadence')(prove))
+require('proof')(5, require('cadence')(prove))
 
 function prove (async, assert) {
     var Uptime = require('../uptime')
@@ -40,6 +40,16 @@ function prove (async, assert) {
             uptime: 0,
             machines: []
         }, 'failed discovery')
+        uptime = new Uptime('http://127.0.0.1/discover', 'http://%s/healthish', ua)
+        uptime.get(async())
+    }, function (response) {
+        assert(response, {
+            uptime: 0,
+            machines: [{
+                location: '127.0.0.1:8888',
+                health: {}
+            }]
+        }, 'failed health')
         uptime = new Uptime('http://127.0.0.1/discover', 'http://%s/health', ua)
         uptime.get(async())
     }, function (response) {
