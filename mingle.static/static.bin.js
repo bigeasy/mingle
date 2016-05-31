@@ -18,12 +18,11 @@
 require('arguable')(module, require('cadence')(function (async, program) {
     var http = require('http')
 
-    var prolific = require('prolific')
     var Shuttle = require('prolific.shuttle')
 
     var Static = require('./http.js')
 
-    var logger = prolific.createLogger('bigeasy.mingle.static.bin')
+    var logger = require('prolific.logger').createLogger('bigeasy.mingle.static.bin')
 
     Shuttle.shuttle(program, 1000, logger)
 

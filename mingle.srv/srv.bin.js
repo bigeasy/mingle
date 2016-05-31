@@ -22,12 +22,11 @@
 require('arguable')(module, require('cadence')(function (async, program) {
     var http = require('http')
 
-    var prolific = require('prolific')
     var Shuttle = require('prolific.shuttle')
 
     var Resolver = require('./http.js')
 
-    var logger = prolific.createLogger('bigeasy.mingle.srv.bin')
+    var logger = require('prolific.logger').createLogger('bigeasy.mingle.srv.bin')
 
     program.helpIf(program.command.param.help)
     program.command.required('bind', 'name')
