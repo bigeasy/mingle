@@ -1,42 +1,42 @@
 {
-    "name":             "mingle.static",
-    "version":          "0.0.0",
-    "description":      "Service discovery that serves a static list of addresses.",
+    "name":                 "mingle.static",
+    "version":              "0.0.0",
+    "description":          "Service discovery that serves a static list of addresses.",
     "keywords":
     [
-                        "consensus", "discovery"
+                            "consensus", "discovery"
     ],
-    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
-    "contributors":     [],
-    "homepage":         "https://github.com/bigeasy/mingle",
-    "bugs":             "https://github.com/bigeasy/mingle/issues",
-    "license":          "MIT",
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "contributors":         [],
+    "homepage":             "https://github.com/bigeasy/mingle",
+    "bugs":                 "https://github.com/bigeasy/mingle/issues",
+    "license":              "MIT",
     "repository":
     {
-                        "type": "git",
-                        "url": "http://github.com/bigeasy/mingle.git"
+                            "type": "git",
+                            "url": "http://github.com/bigeasy/mingle.git"
     },
     "dependencies":
     {
-                        "arguable":             "2.x",
-                        "cadence":              "1.x",
-                        "inlet":                "1.x",
-                        "prolific":             "2.2.3",
-                        "prolific.main":        "0.0.2",
-                        "prolific.logger":      "0.0.1",
-                        "prolific.shuttle":     "2.4.x"
+                            "arguable":             "2.x",
+                            "cadence":              "1.x",
+                            "inlet":                "1.x",
+                            "prolific":             "2.2.3",
+                            "prolific.main":        "0.0.2",
+                            "prolific.logger":      "0.0.1",
+                            "prolific.shuttle":     "2.4.x"
     },
     "devDependencies":
     {
-                        "proof":                "1.x"
+                            "proof":                "1.x"
     },
-    "main":             "static.bin",
+    "main":                 "static.bin",
     "bin":
     {
-                        "mingle-static":        "./static.bin.js"
+                            "mingle-static":        "./static.bin.js"
     },
     "scripts":
     {
-                        "test": "proof test t/*.t.js"
+                            "test": "proof test t/*.t.js"
     }
 }
