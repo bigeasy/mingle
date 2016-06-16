@@ -11,7 +11,7 @@
     "contributors":     [],
     "homepage":         "https://github.com/bigeasy/mingle",
     "bugs":             "https://github.com/bigeasy/mingle/issues",
-    "main":             "supervisor",
+    "main":             "mingle.bin",
     "repository":
     {
                         "type": "git",
@@ -19,7 +19,7 @@
     },
     "bin":
     {
-                        "mingle":             "./supervisor.js"
+                        "mingle":             "./mingle.bin.js"
     },
     "dependencies":
     {
