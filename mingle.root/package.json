@@ -1,7 +1,6 @@
 {
     "name":                 "mingle",
     "version":              "0.0.2",
-    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
     "description":
 
       "Root executable for standard Mingle processes.",
@@ -10,18 +9,14 @@
     [
                             "consensus", "discovery"
     ],
-    "license":              "MIT",
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
     "homepage":             "https://github.com/bigeasy/mingle",
     "bugs":                 "https://github.com/bigeasy/mingle/issues",
-    "main":                 "mingle.bin",
+    "license":              "MIT",
     "repository":
     {
                             "type": "git",
                             "url": "http://github.com/bigeasy/mingle.git"
-    },
-    "bin":
-    {
-                            "mingle":                       "mingle.bin.js"
     },
     "dependencies":
     {
@@ -31,6 +26,11 @@
     "devDependencies":
     {
                             "proof":                        "1.x"
+    },
+    "main":                 "mingle.bin",
+    "bin":
+    {
+                            "mingle":                       "mingle.bin.js"
     },
     "scripts":
     {
