@@ -1,37 +1,39 @@
 {
-    "name":             "mingle",
-    "version":          "0.0.2",
-    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
-    "description":      "Root executable for standard Mingle processes.",
+    "name":                 "mingle",
+    "version":              "0.0.2",
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "description":
+
+      "Root executable for standard Mingle processes.",
+
     "keywords":
     [
-                        "consensus", "discovery"
+                            "consensus", "discovery"
     ],
-    "license":          "MIT",
-    "contributors":     [],
-    "homepage":         "https://github.com/bigeasy/mingle",
-    "bugs":             "https://github.com/bigeasy/mingle/issues",
-    "main":             "mingle.bin",
+    "license":              "MIT",
+    "homepage":             "https://github.com/bigeasy/mingle",
+    "bugs":                 "https://github.com/bigeasy/mingle/issues",
+    "main":                 "mingle.bin",
     "repository":
     {
-                        "type": "git",
-                        "url": "http://github.com/bigeasy/mingle.git"
+                            "type": "git",
+                            "url": "http://github.com/bigeasy/mingle.git"
     },
     "bin":
     {
-                        "mingle":             "./mingle.bin.js"
+                            "mingle":                       "mingle.bin.js"
     },
     "dependencies":
     {
-                        "arguable":             "2.x",
-                        "cadence":              "1.x"
+                            "arguable":                     "2.x",
+                            "cadence":                      "1.x"
     },
     "devDependencies":
     {
-                        "proof":                "1.x"
+                            "proof":                        "1.x"
     },
     "scripts":
     {
-                        "test": "proof test t/*.t.js"
+                            "test": "proof test t/*.t.js"
     }
 }
