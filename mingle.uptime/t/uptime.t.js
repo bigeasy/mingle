@@ -6,7 +6,6 @@ function prove (async, assert) {
     var cadence = require('cadence')
 
     var Vizsla = require('vizsla')
-    var Transport = require('vizsla/mock')
 
     var Dispatcher = require('inlet/dispatcher')
 
@@ -27,8 +26,7 @@ function prove (async, assert) {
 
     var service = new Service
 
-    var transport = new Transport(service.dispatcher.createWrappedDispatcher())
-    var ua = new Vizsla({ transport: transport })
+    var ua = new Vizsla(service.dispatcher.createWrappedDispatcher())
 
     var uptime
 
