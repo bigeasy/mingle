@@ -45,7 +45,7 @@ function prove (async, assert) {
             uptime: 0,
             machines: [{
                 location: '127.0.0.1:8888',
-                health: {}
+                health: null
             }]
         }, 'failed health')
         uptime = new Uptime('http://127.0.0.1/discover', 'http://%s/health', ua)
