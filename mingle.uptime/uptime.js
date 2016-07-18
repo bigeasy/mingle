@@ -25,7 +25,7 @@ Uptime.prototype.get = cadence(function (async) {
             async(function () {
                 this._ua.fetch({ url: url, nullify: true }, async())
             }, function (health) {
-                return { location: location, health: health || {} }
+                return { location: location, health: health }
             })
         })(response)
     }, function (machines) {
