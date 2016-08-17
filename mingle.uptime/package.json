@@ -1,34 +1,36 @@
 {
-    "name":             "mingle.uptime",
-    "version":          "0.0.5",
-    "description":      "Uptime client for Mingle discovery servers.",
+    "name":                 "mingle.uptime",
+    "version":              "0.0.5",
+    "description":
+
+      "Uptime client for Mingle discovery servers.",
+
     "keywords":
     [
-                        "consensus", "discovery"
+                            "consensus", "discovery"
     ],
-    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
-    "contributors":     [],
-    "homepage":         "https://github.com/bigeasy/mingle",
-    "bugs":             "https://github.com/bigeasy/mingle/issues",
-    "license":          "MIT",
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "homepage":             "https://github.com/bigeasy/mingle",
+    "bugs":                 "https://github.com/bigeasy/mingle/issues",
+    "license":              "MIT",
     "repository":
     {
-                        "type": "git",
-                        "url": "http://github.com/bigeasy/mingle.git"
+                            "type": "git",
+                            "url": "http://github.com/bigeasy/mingle.git"
     },
     "dependencies":
     {
-                        "cadence":              "1.0.x"
+                            "cadence":                      "1.0.x"
     },
     "devDependencies":
     {
-                        "inlet":                "1.1.x",
-                        "proof":                "1.0.x",
-                        "vizsla":               "1.5.x"
+                            "inlet":                        "1.1.x",
+                            "proof":                        "1.0.x",
+                            "vizsla":                       "1.5.x"
     },
-    "main":             "uptime",
+    "main":                 "uptime",
     "scripts":
     {
-                        "test": "proof test t/*.t.js"
+                            "test": "proof test t/*.t.js"
     }
 }

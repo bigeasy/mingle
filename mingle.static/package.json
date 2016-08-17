@@ -1,7 +1,10 @@
 {
     "name":                 "mingle.static",
     "version":              "0.0.2",
-    "description":          "Service discovery that serves a static list of addresses.",
+    "description":
+
+      "Service discovery that serves a static list of addresses.",
+
     "keywords":
     [
                             "consensus", "discovery"
