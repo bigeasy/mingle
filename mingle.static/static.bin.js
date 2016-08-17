@@ -26,14 +26,15 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     Shuttle.shuttle(program, 1000, logger)
 
-    program.helpIf(program.command.param.help)
-    program.command.required('bind')
+    program.helpIf(program.ultimate.help)
+    program.required('bind')
+    program.validate(require('arguable/bindable'), 'bind')
 
-    var bind = program.command.bind('bind')
+    var bind = program.ultimate.bind
 
     var mingle = new Static(program.argv)
     var dispatcher = mingle.dispatcher.createWrappedDispatcher()
     var server = http.createServer(dispatcher)
     server.listen(bind.port, bind.address, async())
-    program.on('SIGINT', server.close.bind(server))
+    program.on('shutdown', server.close.bind(server))
 }))

@@ -28,14 +28,15 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var logger = require('prolific.logger').createLogger('bigeasy.mingle.srv.bin')
 
-    program.helpIf(program.command.param.help)
-    program.command.required('bind', 'name')
+    program.helpIf(program.ultimate.help)
+    program.required('bind', 'name')
+    program.validate(require('arguable/bindable'), 'bind')
 
-    var bind = program.command.bind('bind')
+    var bind = program.ultimate.bind
 
     Shuttle.shuttle(program, 1000, logger)
 
-    var resolver = new Resolver(program.command.param.name)
+    var resolver = new Resolver(program.ultimate.name)
     var dispatcher = resolver.dispatcher.createWrappedDispatcher()
     var server = http.createServer(dispatcher)
     server.listen(bind.port, bind.address, async())
