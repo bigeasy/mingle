@@ -34,10 +34,6 @@
                             "proof":                        "1.x"
     },
     "main":                 "srv.bin",
-    "bin":
-    {
-                            "mingle-srv":               "./srv.bin.js"
-    },
     "scripts":
     {
                             "test": "proof test t/*.t.js"

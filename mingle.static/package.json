@@ -33,10 +33,6 @@
                             "proof":                        "1.x"
     },
     "main":                 "static.bin",
-    "bin":
-    {
-                            "mingle-static":                "static.bin.js"
-    },
     "scripts":
     {
                             "test": "proof test t/*.t.js"
