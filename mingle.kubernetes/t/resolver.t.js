@@ -41,8 +41,6 @@ function prove (async, assert) {
     var argv = require('../constructor.argv')
     var exec = require('child_process').exec
     async(function () {
-        exec('make -C t/fixtures/certs', async())
-    }, function () {
         setTimeout(async(), 250)
     }, [function () {
         argv([parameters, { token: path.join(__dirname, 'x') }], async())

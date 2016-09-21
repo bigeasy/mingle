@@ -5,7 +5,6 @@ function prove (async, assert) {
     var path = require('path')
     var program
     async(function () {
-    }, function () {
         program = bin([
             '--bind', '127.0.0.1:8888',
             '--token', path.join(__dirname, 'fixtures/token'),
