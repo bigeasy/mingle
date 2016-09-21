@@ -16,7 +16,7 @@ branches:
 # build output.
 
 before_install:
-  - npm install proof istanbul
+  - npm install proof istanbul coveralls
   - for dir in mingle.*; do (cd $dir && npm install); done
 
 script: t/test
