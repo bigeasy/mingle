@@ -4,3 +4,6 @@
 /.todo.txt
 /.proof.out
 /coverage
+*/coverage
+*.srl
+*.pem
