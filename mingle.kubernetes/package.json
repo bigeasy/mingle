@@ -33,7 +33,7 @@
                             "proof":                        "1.1.x",
                             "vizsla":                       "2.0.x"
     },
-    "main":                 "srv.bin",
+    "main":                 "kubernetes.bin",
     "scripts":
     {
                             "test": "proof test t/*.t.js"
