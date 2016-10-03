@@ -1,5 +1,5 @@
 var cadence = require('cadence')
-var logger = require('prolific.logger').createLogger('mingle.srv.resolve')
+var logger = require('prolific.logger').createLogger('mingle.srv')
 
 module.exports = cadence(function (async, dns, name) {
     async([function () {
