@@ -26,7 +26,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var Resolver = require('./http.js')
 
-    var logger = require('prolific.logger').createLogger('bigeasy.mingle.srv.bin')
+    var logger = require('prolific.logger').createLogger('mingle.srv')
 
     program.helpIf(program.ultimate.help)
     program.required('bind', 'name')

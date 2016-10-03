@@ -22,7 +22,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var Static = require('./http.js')
 
-    var logger = require('prolific.logger').createLogger('bigeasy.mingle.static.bin')
+    var logger = require('prolific.logger').createLogger('mingle.static')
 
     Shuttle.shuttle(program, 1000, logger)
 

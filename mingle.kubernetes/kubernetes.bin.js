@@ -38,7 +38,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var UserAgent = require('vizsla')
     var Service = require('./http')
 
-    var logger = require('prolific.logger').createLogger('bigeasy.mingle.kubernetes')
+    var logger = require('prolific.logger').createLogger('mingle.kubernetes')
     var argv = require('./constructor.argv')
 
     var shuttle = Shuttle.shuttle(program, logger)
