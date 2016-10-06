@@ -38,6 +38,11 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var UserAgent = require('vizsla')
     var Service = require('./http')
 
+    if (!program.ultimate.kubernetes) {
+        program.ultimate.kubernetes =
+            program.env.KUBERNETES_SERVICE_HOST + ':' + program.env.KUBERNETES_SERVICE_PORT
+    }
+
     var logger = require('prolific.logger').createLogger('mingle.kubernetes')
     var argv = require('./constructor.argv')
 
