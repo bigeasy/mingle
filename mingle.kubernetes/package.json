@@ -20,7 +20,7 @@
     },
     "dependencies":
     {
-                            "arguable":                     "4.0.x",
+                            "arguable":                     "4.3.x",
                             "cadence":                      "1.0.x",
                             "inlet":                        "2.0.x",
                             "prolific.logger":              "2.0.x",
