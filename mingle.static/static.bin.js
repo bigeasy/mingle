@@ -24,7 +24,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var logger = require('prolific.logger').createLogger('mingle.static')
 
-    Shuttle.shuttle(program, 1000, logger)
+    Shuttle.shuttle(program, logger)
 
     program.helpIf(program.ultimate.help)
     program.required('bind')
