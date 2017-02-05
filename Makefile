@@ -144,13 +144,26 @@ endif
 	    node node_modules/.bin/edify highlight --select '.lang-javascript' --language 'javascript') < $< > $@
 
 clean:
-	rm -f $(outputs) $(pages)
+	rm -f $(outputs) $(pages) docco/*.html
 
 serve: node_modules/.bin/serve all
 	node_modules/.bin/serve --no-less --port 4000
 
-tracking:
-	@ dir=$$(cd .. && pwd); \
+tracking-specific:
+	@ \
+	pwd=$$(pwd); \
+	if [ -e "$$pwd"/.gitmodules ]; then \
+		tail=$$( \
+			git config -f "$$pwd"/.gitmodules -l | \
+				sed -n 's/submodule\.\(.*\)\.branch/\1/p' | \
+				tail -n 1 \
+		); \
+		if [ ! -z "$$tail" ]; then \
+			IFS='=' read -a pair <<< "$$tail"; \
+			make -C "$${pair[0]}" tracking-specific; \
+		fi; \
+	fi; \
+	dir=$$(cd .. && pwd); \
 	path=$$(basename $$(pwd)); \
 	while ! [ -e "$$dir"/.gitmodules ]; do \
 		path=$$(basename "$$dir")/$$path; \
@@ -158,10 +171,22 @@ tracking:
 	done; \
 	branch=$$(git config -f "$$dir"/.gitmodules submodule.$$path.branch); \
 	[ -z "$$branch" ] && echo no branch && exit 1; \
-	git checkout $$branch; \
-	for dir in $$(find . -type d -maxdepth 1 -mindepth 1); do \
-		if [ -e "$$dir"/Makefile ]; then \
-			make -C "$$dir" tracking; \
+	git checkout $$branch;
+
+tracking: tracking-specific
+	@ pwd=$$(pwd); \
+	dir=$$(cd .. && pwd); \
+	path=$$(basename $$(pwd)); \
+	while ! [ -e "$$dir"/.gitmodules ]; do \
+		path=$$(basename "$$dir")/$$path; \
+		dir=$$(cd "$$dir" && cd .. && pwd); \
+	done; \
+	git config -f ../.gitmodules -l | \
+		sed -n 's/submodule\.\(.*\)\.branch/\1/p' | \
+    while read -r line; do \
+		IFS='=' read -a pair <<< "$$line"; \
+		if [ "$$dir"/"$${pair[0]}" != "$$pwd" ]; then \
+			echo make -C "$$dir"/"$${pair[0]}" tracking-specific; \
 		fi \
 	done
 
