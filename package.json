@@ -1,0 +1,30 @@
+{
+    "private":              true,
+    "name":                 "mingle",
+    "version":              "0.0.0",
+    "description":
+
+      "Service discovery utiltity.",
+
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "homepage":             "https://github.com/bigeasy/mingle",
+    "bugs":                 "https://github.com/bigeasy/mingle/issues",
+    "license":              "MIT",
+    "repository":
+    {
+                            "type": "git",
+                            "url": "http://github.com/bigeasy/mingle.git"
+    },
+    "dependencies":
+    {
+    },
+    "devDependencies":
+    {
+                            "proof":                        "1.2.x"
+    },
+    "main":                 "mingle",
+    "scripts":
+    {
+                            "test": "proof platform win32 && proof test */*/*.t.js || t/test"
+    }
+}
