@@ -7,3 +7,6 @@
 [submodule "mingle.root/docs"]
 	path = mingle.root/docs
 	url = https://github.com/bigeasy/mingle.git
+[submodule "mingle.uptime/docs"]
+	path = mingle.uptime/docs
+	url = https://github.com/bigeasy/mingle.git
