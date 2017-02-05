@@ -160,8 +160,8 @@ tracking-specific:
 		); \
 		if [ ! -z "$$tail" ]; then \
 			IFS='=' read -a pair <<< "$$tail"; \
-			echo make -C "$${pair[0]}" tracking-specific; \
-			make -C "$${pair[0]}" tracking-specific; \
+			echo make -C "$$pwd"/"$${pair[0]}" tracking; \
+			make -C "$$pwd"/"$${pair[0]}" tracking; \
 		fi; \
 	fi; \
 	dir=$$(cd .. && pwd); \
