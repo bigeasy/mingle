@@ -4,3 +4,6 @@
 [submodule "static"]
 	path = static
 	url = https://github.com/bigeasy/mingle.git
+[submodule "uptime"]
+	path = uptime
+	url = https://github.com/bigeasy/mingle.git
