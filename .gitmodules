@@ -9,7 +9,7 @@
 [submodule "uptime"]
 	path = uptime
 	url = https://github.com/bigeasy/mingle.git
-    branch = static.gh-pages
+    branch = uptime.gh-pages
 [submodule "vendor/lesshat"]
 	path = vendor/lesshat
 	url = https://github.com/madebysource/lesshat.git
