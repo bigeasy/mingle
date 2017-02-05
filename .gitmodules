@@ -1,12 +1,16 @@
 [submodule "docs"]
 	path = docs
 	url = https://github.com/bigeasy/mingle.git
+	branch = gh-pages
 [submodule "mingle.static/docs"]
 	path = mingle.static/docs
 	url = https://github.com/bigeasy/mingle.git
+	branch = static.gh-pages
 [submodule "mingle.root/docs"]
 	path = mingle.root/docs
 	url = https://github.com/bigeasy/mingle.git
+	branch = root.gh-pages
 [submodule "mingle.uptime/docs"]
 	path = mingle.uptime/docs
 	url = https://github.com/bigeasy/mingle.git
+	branch = uptime.gh-pages
