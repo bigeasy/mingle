@@ -149,4 +149,20 @@ clean:
 serve: node_modules/.bin/serve all
 	node_modules/.bin/serve --no-less --port 4000
 
+tracking:
+	@ dir=$$(cd .. && pwd); \
+	path=$$(basename $$(pwd)); \
+	while ! [ -e "$$dir"/.gitmodules ]; do \
+		path=$$(basename "$$dir")/$$path; \
+		dir=$$(cd "$$dir" && cd .. && pwd); \
+	done; \
+	branch=$$(git config -f "$$dir"/.gitmodules submodule.$$path.branch); \
+	[ -z "$$branch" ] && echo no branch && exit 1; \
+	git checkout $$branch; \
+	for dir in $$(find . -type d -maxdepth 1 -mindepth 1); do \
+		if [ -e "$$dir"/Makefile ]; then \
+			make -C "$$dir" tracking; \
+		fi \
+	done
+
 .INTERMEDIATE: $(sources)

@@ -7,3 +7,6 @@
 [submodule "uptime"]
 	path = uptime
 	url = https://github.com/bigeasy/mingle.git
+[submodule "vendor/lesshat"]
+	path = vendor/lesshat
+	url = https://github.com/madebysource/lesshat.git
