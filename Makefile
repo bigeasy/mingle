@@ -160,6 +160,7 @@ tracking-specific:
 		); \
 		if [ ! -z "$$tail" ]; then \
 			IFS='=' read -a pair <<< "$$tail"; \
+			echo make -C "$${pair[0]}" tracking-specific; \
 			make -C "$${pair[0]}" tracking-specific; \
 		fi; \
 	fi; \
@@ -171,7 +172,8 @@ tracking-specific:
 	done; \
 	branch=$$(git config -f "$$dir"/.gitmodules submodule.$$path.branch); \
 	[ -z "$$branch" ] && echo no branch && exit 1; \
-	git checkout $$branch;
+	echo git -C "$$pwd" checkout $$branch; \
+	git -C "$$pwd" checkout $$branch;
 
 tracking: tracking-specific
 	@ pwd=$$(pwd); \
@@ -187,6 +189,7 @@ tracking: tracking-specific
 		IFS='=' read -a pair <<< "$$line"; \
 		if [ "$$dir"/"$${pair[0]}" != "$$pwd" ]; then \
 			echo make -C "$$dir"/"$${pair[0]}" tracking-specific; \
+			make -C "$$dir"/"$${pair[0]}" tracking-specific; \
 		fi \
 	done
 
