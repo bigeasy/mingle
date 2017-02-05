@@ -1,3 +1,9 @@
 [submodule "docs"]
 	path = docs
 	url = https://github.com/bigeasy/mingle.git
+[submodule "mingle.static/docs"]
+	path = mingle.static/docs
+	url = https://github.com/bigeasy/mingle.git
+[submodule "mingle.root/docs"]
+	path = mingle.root/docs
+	url = https://github.com/bigeasy/mingle.git
