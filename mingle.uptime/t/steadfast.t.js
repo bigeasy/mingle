@@ -1,12 +1,9 @@
-require('proof/redux')(6, prove)
+require('proof/redux')(4, prove)
 
 function prove (assert) {
-    var uptime = require('../steadfast')
-    assert(!uptime([], [null, {}]), 'unhealthy machines')
-    assert(!uptime([], [{ health: { instanceId: '1' } }]), 'machine added')
-    assert(uptime([{ health: { instanceId: '1' } }], [{ health: { instanceId: '1' }}]), 'copacetic')
-    assert(!uptime([{ health: { instanceId: '1' } }], [{ health: { instanceId: '2' }}]), 'difference')
-    assert(!uptime([{ health: { instanceId: '1' } }],
-        [{ health: { instanceId: '1' } }, { health: { instanceId: '2' }}]), 'longer')
-    assert(!uptime([{ health: { instanceId: '1' } }], [{ health: {}}]), 'unhealthy')
+    var steadfast = require('../steadfast')
+    assert(!steadfast([{ id: 'x' }], []), 'empty')
+    assert(!steadfast([{ id: 'x' }], [{ id: 'x' }, { id: 'y' }]), 'wrong length')
+    assert(!steadfast([{ id: 'x' }, { id: 'z' }], [{ id: 'x' }, { id: 'y' }]), 'wrong values')
+    assert(steadfast([{ id: 'x' }, { id: 'y' }], [{ id: 'x' }, { id: 'y' }]), 'steadfast')
 }

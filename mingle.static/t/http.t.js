@@ -8,7 +8,7 @@ function prove (async, assert) {
     async(function () {
         mingle.index(async())
     }, function (response) {
-        assert(response, 'Mingle Static Discovery API', 'index')
+        assert(response, 'Mingle Static Discovery API\n', 'index')
         mingle.discover(async())
     }, function (response) {
         assert(response, [ '127.0.0.1:8081' ], 'discover')
