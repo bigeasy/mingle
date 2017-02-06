@@ -24,7 +24,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var logger = require('prolific.logger').createLogger('mingle.static')
 
-    Shuttle.shuttle(program, logger)
+    var shuttle = Shuttle.shuttle(program, logger)
 
     program.helpIf(program.ultimate.help)
     program.required('bind')
@@ -37,4 +37,8 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var server = http.createServer(dispatcher)
     server.listen(bind.port, bind.address, async())
     program.on('shutdown', server.close.bind(server))
+    program.on('shutdown', shuttle.close.bind(shuttle))
+    program.on('shutdown', function () {
+        console.log('am shutdown')
+    })
 }))
