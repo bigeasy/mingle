@@ -38,7 +38,4 @@ require('arguable')(module, require('cadence')(function (async, program) {
     server.listen(bind.port, bind.address, async())
     program.on('shutdown', server.close.bind(server))
     program.on('shutdown', shuttle.close.bind(shuttle))
-    program.on('shutdown', function () {
-        console.log('am shutdown')
-    })
 }))
