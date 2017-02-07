@@ -8,9 +8,9 @@ function prove (async, assert) {
         Date: { now: function () { return now } }
     })
 
-    assert(uptime.calcuate([{ id: '1', health: true }]), 0, 'no uptime')
+    assert(uptime.calculate([{ id: '1', health: true }]), 0, 'no uptime')
     now++
-    assert(uptime.calcuate([{ id: '1', health: true }]), 1, 'uptime')
+    assert(uptime.calculate([{ id: '1', health: true }]), 1, 'uptime')
 
     uptime = new Uptime
     assert(uptime._Date === Date, 'defaults')

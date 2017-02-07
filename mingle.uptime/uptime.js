@@ -10,7 +10,7 @@ function Uptime (options) {
     this._lastChecked = null
 }
 
-Uptime.prototype.calcuate = function (machines) {
+Uptime.prototype.calculate = function (machines) {
     var now = this._Date.now()
     if (steadfast(this._previous, machines)) {
         this.since += (now - this._lastChecked)
