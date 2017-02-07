@@ -1,5 +1,6 @@
 /.wiseguy
-/node_modules
+/node_modules/*
+!/node_modules/wiseguy
 /*/node_modules/*
 !/mingle.root/node_modules/mingle.test.js
 /.todo.txt
