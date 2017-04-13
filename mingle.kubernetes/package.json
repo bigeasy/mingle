@@ -1,6 +1,6 @@
 {
     "name":                 "mingle.kubernetes",
-    "version":              "0.0.4",
+    "version":              "0.1.0",
     "description":
 
       "Service discovery using Kubernetes API pod listing.",
@@ -20,11 +20,11 @@
     },
     "dependencies":
     {
-                            "arguable":                     "4.3.x",
+                            "arguable":                     "5.0.x",
                             "cadence":                      "1.0.x",
                             "inlet":                        "2.0.x",
-                            "prolific.logger":              "2.0.x",
-                            "prolific.shuttle":             "7.0.x",
+                            "prolific.logger":              "3.0.x",
+                            "prolific.shuttle":             "9.0.x",
                             "rescue":                       "3.0.x",
                             "server-destroy":               "1.0.1"
     },
