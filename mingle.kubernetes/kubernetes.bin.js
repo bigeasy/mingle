@@ -36,7 +36,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var createResolver = require('./resolver')
     var UserAgent = require('vizsla')
-    var Service = require('./http')
+    var Service = require('./middleware')
 
     if (!program.ultimate.kubernetes) {
         program.ultimate.kubernetes =
