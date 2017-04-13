@@ -1,13 +1,13 @@
 var cadence = require('cadence')
-var Dispatcher = require('inlet/dispatcher')
+var Reactor = require('reactor')
 
 function Service (resolver) {
     this._resolver = resolver
-    var dispatcher = new Dispatcher(this)
-    dispatcher.dispatch('GET /', 'index')
-    dispatcher.dispatch('GET /discover', 'discover')
-    dispatcher.dispatch('GET /health', 'health')
-    this.dispatcher = dispatcher
+    this.reactor = new Reactor(this, function (dispatcher) {
+        dispatcher.dispatch('GET /', 'index')
+        dispatcher.dispatch('GET /discover', 'discover')
+        dispatcher.dispatch('GET /health', 'health')
+    })
 }
 
 Service.prototype.index = cadence(function () {
@@ -19,7 +19,7 @@ Service.prototype.discover = cadence(function (async) {
 })
 
 Service.prototype.health = cadence(function () {
-    return { http: this.dispatcher.turnstile.health }
+    return { http: this.reactor.turnstile.health }
 })
 
 module.exports = Service

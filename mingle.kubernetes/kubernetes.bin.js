@@ -54,7 +54,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
         argv([ { ua: new UserAgent }, program.ultimate ], async())
     }, function (resolver) {
         var service = new Service(resolver)
-        var server = http.createServer(service.dispatcher.createWrappedDispatcher())
+        var server = http.createServer(service.reactor.middleware)
         server.listen(resolver.bind.port, resolver.bind.address, async())
         destroyer(server)
         program.on('shutdown', server.destroy.bind(server))

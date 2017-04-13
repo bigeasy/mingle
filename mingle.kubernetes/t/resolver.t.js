@@ -1,7 +1,7 @@
 require('proof')(3, require('cadence')(prove))
 
 function prove (async, assert) {
-    var Dispatcher = require('inlet/dispatcher')
+    var Reactor = require('reactor')
     var cadence = require('cadence')
     var path = require('path')
 
@@ -9,9 +9,9 @@ function prove (async, assert) {
     var path = require('path')
 
     function Service () {
-        var dispatcher = new Dispatcher({ object: this })
-        dispatcher.dispatch('GET /api/v1/namespaces/namespace/pods', 'pods')
-        this.dispatcher = dispatcher
+        this.reactor = new Reactor(this, function (dispatcher) {
+            dispatcher.dispatch('GET /api/v1/namespaces/namespace/pods', 'pods')
+        })
     }
 
     Service.prototype.pods = cadence(function (async) {
@@ -27,7 +27,7 @@ function prove (async, assert) {
     var UserAgent = require('vizsla')
 
     var parameters = {
-        ua: new UserAgent(service.dispatcher.createWrappedDispatcher()),
+        ua: new UserAgent(service.reactor.middleware),
         token: path.join(__dirname, 'fixtures/token'),
         ca: path.join(__dirname, 'fixtures/certs/ca-cert.pem'),
         bind: 8080,
