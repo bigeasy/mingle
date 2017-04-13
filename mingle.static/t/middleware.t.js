@@ -1,7 +1,7 @@
 require('proof')(3, require('cadence')(prove))
 
 function prove (async, assert) {
-    var Static = require('../http')
+    var Static = require('../middleware')
 
     var mingle = new Static([ '127.0.0.1:8081' ])
 

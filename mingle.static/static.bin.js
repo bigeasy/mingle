@@ -20,7 +20,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var Shuttle = require('prolific.shuttle')
 
-    var Static = require('./http.js')
+    var Static = require('./middleware.js')
 
     var logger = require('prolific.logger').createLogger('mingle.static')
 
