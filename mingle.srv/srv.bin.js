@@ -24,7 +24,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var Shuttle = require('prolific.shuttle')
 
-    var Resolver = require('./http.js')
+    var Resolver = require('./middleware.js')
 
     var logger = require('prolific.logger').createLogger('mingle.srv')
 

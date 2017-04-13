@@ -1,7 +1,7 @@
 require('proof')(3, require('cadence')(prove))
 
 function prove (async, assert) {
-    var Resolver = require('../http')
+    var Resolver = require('../middleware')
 
     var resolver = new Resolver('_mingle._tcp.mingle.prettyrobots.com')
 
