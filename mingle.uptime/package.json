@@ -24,9 +24,7 @@
     },
     "devDependencies":
     {
-                            "inlet":                        "2.0.x",
-                            "proof":                        "3.0.x",
-                            "vizsla":                       "2.0.x"
+                            "proof":                        "3.0.x"
     },
     "main":                 "uptime",
     "scripts":
