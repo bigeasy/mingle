@@ -15,7 +15,7 @@ function prove (async, assert) {
         resolver.health(async())
     }, function (response) {
         assert(response, {
-            http: { occupied: 0, waiting: 0, rejecting: 0, turnstiles: 256 }
+            http: { occupied: 0, waiting: 0, rejecting: 0, turnstiles: 24 }
         }, 'health')
     })
 }

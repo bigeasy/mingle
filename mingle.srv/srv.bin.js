@@ -37,8 +37,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var shuttle = Shuttle.shuttle(program, logger)
 
     var resolver = new Resolver(program.ultimate.name)
-    var dispatcher = resolver.dispatcher.createWrappedDispatcher()
-    var server = http.createServer(dispatcher)
+    var server = http.createServer(resolver.reactor.middlware)
     server.listen(bind.port, bind.address, async())
     program.on('shutdown', server.close.bind(server))
     program.on('shutdown', shuttle.close.bind(server))
