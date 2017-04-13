@@ -23,8 +23,8 @@
                             "arguable":                     "4.0.x",
                             "cadence":                      "1.0.x",
                             "inlet":                        "2.0.x",
-                            "prolific.logger":              "2.0.x",
-                            "prolific.shuttle":             "4.0.x"
+                            "prolific.logger":              "3.0.x",
+                            "prolific.shuttle":             "9.0.x"
     },
     "devDependencies":
     {

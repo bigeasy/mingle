@@ -34,11 +34,12 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var bind = program.ultimate.bind
 
-    Shuttle.shuttle(program, 1000, logger)
+    var shuttle = Shuttle.shuttle(program, logger)
 
     var resolver = new Resolver(program.ultimate.name)
     var dispatcher = resolver.dispatcher.createWrappedDispatcher()
     var server = http.createServer(dispatcher)
     server.listen(bind.port, bind.address, async())
-    program.on('SIGINT', server.close.bind(server))
+    program.on('shutdown', server.close.bind(server))
+    program.on('shutdown', shuttle.close.bind(server))
 }))
