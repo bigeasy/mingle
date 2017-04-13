@@ -1,13 +1,13 @@
 var cadence = require('cadence')
-var Dispatcher = require('inlet/dispatcher')
+var Reactor = require('reactor')
 
 function Static (addresses) {
     this._addresses = addresses
-    var dispatcher = new Dispatcher({ object: this, workers: 256 })
-    dispatcher.dispatch('GET /', 'index')
-    dispatcher.dispatch('GET /discover', 'discover')
-    dispatcher.dispatch('GET /health', 'health')
-    this.dispatcher = dispatcher
+    this.reactor = new Reactor(this, function (dispatcher) {
+        dispatcher.dispatch('GET /', 'index')
+        dispatcher.dispatch('GET /discover', 'discover')
+        dispatcher.dispatch('GET /health', 'health')
+    })
 }
 
 Static.prototype.index = cadence(function () {
@@ -19,7 +19,7 @@ Static.prototype.discover = cadence(function () {
 })
 
 Static.prototype.health = cadence(function () {
-    return { http: this.dispatcher.turnstile.health }
+    return { http: this.reactor.turnstile.health }
 })
 
 module.exports = Static
