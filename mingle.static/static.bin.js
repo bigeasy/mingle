@@ -33,7 +33,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var bind = program.ultimate.bind
 
     var mingle = new Static(program.argv)
-    var server = http.createServer(mingle.reactor.mingle)
+    var server = http.createServer(mingle.reactor.middleware)
     server.listen(bind.port, bind.address, async())
     program.on('shutdown', server.close.bind(server))
     program.on('shutdown', shuttle.close.bind(shuttle))
