@@ -22,9 +22,9 @@
     {
                             "arguable":                     "5.0.x",
                             "cadence":                      "1.0.x",
-                            "reactor":                      "4.4.x",
                             "prolific.logger":              "3.0.x",
-                            "prolific.shuttle":             "9.0.x"
+                            "prolific.shuttle":             "9.0.x",
+                            "reactor":                      "4.4.x"
     },
     "devDependencies":
     {
