@@ -32,10 +32,12 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var bind = program.ultimate.bind
 
+    var destroyer = require('server-destroy')
     var mingle = new Static(program.argv)
     var server = http.createServer(mingle.reactor.middleware)
+    destroyer(server)
     server.listen(bind.port, bind.address, async())
-    program.on('shutdown', server.close.bind(server))
+    program.on('shutdown', server.destroy.bind(server))
     program.on('shutdown', shuttle.close.bind(shuttle))
     logger.info('started', { parameters: program.ultimate })
 }))
