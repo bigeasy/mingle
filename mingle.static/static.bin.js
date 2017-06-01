@@ -24,14 +24,12 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var Shuttle = require('prolific.shuttle')
 
     var Destructible = require('destructible')
-    var Terminator = require('destructible/terminator')
 
     program.helpIf(program.ultimate.help)
     program.required('bind')
     program.validate(require('arguable/bindable'), 'bind')
 
     var destructible = new Destructible('mingle.static')
-    destructible.events.pump(new Terminator(1000), 'push')
     program.on('shutdown', destructible.destroy.bind(destructible))
 
     var logger = require('prolific.logger').createLogger('mingle.static')
