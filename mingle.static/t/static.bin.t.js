@@ -5,8 +5,11 @@ function prove (async, assert) {
     var program
     async(function () {
         program = bin([ '--bind', '127.0.0.1:8888' ], {}, async())
-    }, function () {
-        assert(true, 'started')
-        program.emit('SIGINT')
+        async(function () {
+            program.ready.wait(async())
+        }, function () {
+            assert(true, 'started')
+            program.emit('SIGINT')
+        })
     })
 }

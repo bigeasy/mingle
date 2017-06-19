@@ -18,6 +18,7 @@
 require('arguable')(module, require('cadence')(function (async, program) {
     var http = require('http')
     var destroyer = require('server-destroy')
+    var delta = require('delta')
 
     var Static = require('./middleware.js')
 
@@ -41,7 +42,14 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var mingle = new Static(program.argv)
     var server = http.createServer(mingle.reactor.middleware)
     destroyer(server)
-    server.listen(bind.port, bind.address, async())
-    destructible.addDestructor('http', server, 'destroy')
-    logger.info('started', { parameters: program.ultimate })
+    async(function () {
+        destructible.addDestructor('http', server, 'destroy')
+        server.listen(bind.port, bind.address, async())
+    }, function () {
+        program.ready.unlatch()
+        logger.info('started', { parameters: program.ultimate })
+        delta(async()).ee(server).on('close')
+    }, function () {
+        return [ 0 ]
+    })
 }))
