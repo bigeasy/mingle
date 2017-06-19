@@ -14,8 +14,11 @@ function prove (async, assert) {
             '--container', 'conduit',
             '--kubernetes', '127.0.0.1:8080'
         ], async())
-    }, function () {
-        assert(true, 'started')
-        program.emit('SIGINT')
+        async(function () {
+            program.ready.wait(async())
+        }, function () {
+            assert(true, 'started')
+            program.emit('SIGTERM')
+        })
     })
 }

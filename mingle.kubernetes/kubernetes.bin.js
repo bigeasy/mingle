@@ -30,6 +30,8 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var http = require('http')
 
+    var delta = require('delta')
+
     var Shuttle = require('prolific.shuttle')
 
     var destroyer = require('server-destroy')
@@ -37,6 +39,10 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var createResolver = require('./resolver')
     var UserAgent = require('vizsla')
     var Service = require('./middleware')
+    var Destructible = require('destructible')
+
+    var destructible = new Destructible('mingle.kubernetes')
+    program.on('shutdown', destructible.destroy.bind(destructible))
 
     if (!program.ultimate.kubernetes) {
         program.ultimate.kubernetes =
@@ -47,17 +53,21 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var argv = require('./constructor.argv')
 
     var shuttle = Shuttle.shuttle(program, logger)
+    destructible.addDestructor('shuttle', shuttle, 'close')
 
     var options = JSON.parse(JSON.stringify(program.ultimate))
 
+    var server
     async(function () {
         argv([ { ua: new UserAgent }, program.ultimate ], async())
     }, function (resolver) {
         var service = new Service(resolver)
-        var server = http.createServer(service.reactor.middleware)
-        server.listen(resolver.bind.port, resolver.bind.address, async())
+        server = http.createServer(service.reactor.middleware)
         destroyer(server)
-        program.on('shutdown', server.destroy.bind(server))
-        program.on('shutdown', shuttle.close.bind(shuttle))
+        server.listen(resolver.bind.port, resolver.bind.address, async())
+    }, function () {
+        destructible.addDestructor('http', server, 'destroy')
+        delta(async()).ee(server).on('close')
+        program.ready.unlatch()
     })
 }))
