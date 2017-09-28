@@ -33,6 +33,7 @@ Resolver.prototype._select = function (json) {
     var pod = this._pod, container = this._container
     var items = json.items.filter(function (item) {
         return item.metadata.labels.name == pod &&
+            item.status.containerStatuses &&
             item.status.containerStatuses.filter(function (container) {
                 return container.name == sought.container && container.ready
             })
