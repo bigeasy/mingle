@@ -33,7 +33,7 @@
     "devDependencies":
     {
                             "proof":                        "3.0.x",
-                            "vizsla":                       "5.0.x"
+                            "vizsla":                       "7.0.x"
     },
     "main":                 "kubernetes.bin",
     "scripts":
