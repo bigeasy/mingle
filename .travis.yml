@@ -13,7 +13,7 @@ branches:
     - travis-ci
 
 install:
-  - npm install proof istanbul coveralls@2
+  - npm install proof istanbul coveralls
   - for dir in mingle.*; do (cd $dir && npm install); done
 
 script: t/test
