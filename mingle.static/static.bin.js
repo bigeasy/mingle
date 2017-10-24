@@ -53,7 +53,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var bind = program.ultimate.bind
 
-    var mingle = new Static(program.argv, coalesce(program.ultimate.format, "%s:%d"))
+    var mingle = new Static(program.argv, coalesce(program.ultimate.format, '%s:%d'))
     var server = http.createServer(mingle.reactor.middleware)
     destroyer(server)
     async(function () {
