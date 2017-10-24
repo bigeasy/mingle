@@ -46,9 +46,10 @@ require('arguable')(module, require('cadence')(function (async, program) {
         destructible.addDestructor('http', server, 'destroy')
         server.listen(bind.port, bind.address, async())
     }, function () {
-        program.ready.unlatch()
         logger.info('started', { parameters: program.ultimate })
-        delta(async()).ee(server).on('close')
+        delta(destructible.monitor('server')).ee(server).on('close')
+        destructible.completed.wait(async())
+        program.ready.unlatch()
     }, function () {
         return [ 0 ]
     })
