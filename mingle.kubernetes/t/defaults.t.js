@@ -4,6 +4,7 @@ function prove (assert) {
     var defaults = require('../defaults')
     assert(defaults({
         ua: {},
+        format: 'http://%s:%d/',
         bind: { address: '0.0.0.0', port: 8888 },
         token: '/home/mingle/token',
         ca: '/home/mingle/ca',
@@ -14,6 +15,7 @@ function prove (assert) {
         kubernetes: '127.0.0.1:8080'
     }), {
         ua: {},
+        format: 'http://%s:%d/',
         bind: { address: '0.0.0.0', port: 8888 },
         token: '/home/mingle/token',
         ca: '/home/mingle/ca',
@@ -32,6 +34,7 @@ function prove (assert) {
         kubernetes: '127.0.0.1:8080'
     }), {
         ua: {},
+        format: '%s:%d',
         bind: { address: '0.0.0.0', port: 8888 },
         token: '/var/run/secrets/kubernetes.io/serviceaccount/token',
         ca: '/var/run/secrets/kubernetes.io/serviceaccount/ca.crt',

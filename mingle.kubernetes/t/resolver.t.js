@@ -31,6 +31,7 @@ function prove (async, assert) {
         token: path.join(__dirname, 'fixtures/token'),
         ca: path.join(__dirname, 'fixtures/certs/ca-cert.pem'),
         bind: 8080,
+        format: '%s:%d',
         kubernetes: '127.0.0.1:8080',
         namespace: 'namespace',
         pod: 'service',

@@ -3,6 +3,7 @@ var fs = require('fs')
 var assert = require('assert')
 var rescue = require('rescue')
 var arguable = require('arguable')
+var sprintf = require('sprintf-js').sprintf
 
 function Resolver (options) {
     this.bind = options.bind
@@ -11,6 +12,7 @@ function Resolver (options) {
     this._pod = options.pod
     this._container = options.container
     this._port = options.port
+    this._format = options.format
     this._session = {
         ca: options.ca,
         token: options.token,
@@ -38,6 +40,7 @@ Resolver.prototype._select = function (json) {
                 return container.name == sought.container && container.ready
             })
     })
+    var format = this._format
     return items.map(function (item) {
         var container = item.spec.containers.filter(function (container) {
             return container.name == sought.container
@@ -47,7 +50,7 @@ Resolver.prototype._select = function (json) {
             return port.name == sought.port
         }).shift()
         assert(port, 'cannot find port')
-        return item.status.podIP + ':' + port.containerPort
+        return sprintf(format, item.status.podIP, +port.containerPort)
     })
 }
 

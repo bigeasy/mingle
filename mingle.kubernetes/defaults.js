@@ -2,6 +2,7 @@ module.exports = function (ultimate) {
     return {
         ua: ultimate.ua,
         bind: ultimate.bind,
+        format: ultimate.format || '%s:%d',
         token: ultimate.token || '/var/run/secrets/kubernetes.io/serviceaccount/token',
         ca: ultimate.ca || '/var/run/secrets/kubernetes.io/serviceaccount/ca.crt',
         namespace: ultimate.namespace,

@@ -5,23 +5,47 @@
     options:
 
         -b, --bind <address:port>
+
             Address and port to bind to.
+
+        -f, --format <format>
+
+          A sprintf format for address and port. A `sprintf` is invoked with
+          with the pattern and host name and port as first and second arguments
+          respectively. The pattern defaults to "%s:%d" to create a result like
+          "127.0.0.1:8080".
+
         -n, --namespace <string>
-            Namespace of pod to check for readiness.
+
+         Namespace of pod to check for readiness.
+
         -p, --pod <string>
-            Name of pod to check for readiness.
+
+          Name of pod to check for readiness.
+
         -c, --container <string>
-            Container inside pod to check for readiness.
+
+          Container inside pod to check for readiness.
+
         -P, --port <string>
-            Name of port. Defaults to container name if not specified.
+
+          Name of port. Defaults to container name if not specified.
+
         -t, --token <string>
-            Path to security token.
+
+          Path to security token.
+
         -C, --ca <string>
-            Path to certificate authority.
+
+          Path to certificate authority.
+
         -k, --kubernetes <address:port>
-            Address and port of the kubernetes API.
+
+          Address and port of the kubernetes API.
+
         --help
-            Display help message.
+
+          Display help message.
     ___ . ___
 
  */
