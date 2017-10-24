@@ -5,8 +5,20 @@
 
     options:
 
-        -b, --bind      <address:port>  address and port to bind to
-        --help                          display help message
+        -b, --bind <address:port>
+
+          Address and port to bind to.
+
+        -f, --format <format>
+
+          A sprintf format for address and port. A `sprintf` is invoked with
+          with the pattern and host name and port as first and second arguments
+          respectively. The pattern defaults to "%s:%d" to create a result like
+          "127.0.0.1:8080".
+
+        --help
+
+          Display help message.
 
     ___ $ ___ en_US ___
 
@@ -18,7 +30,9 @@
 require('arguable')(module, require('cadence')(function (async, program) {
     var http = require('http')
     var destroyer = require('server-destroy')
+
     var delta = require('delta')
+    var coalesce = require('extant')
 
     var Static = require('./middleware.js')
 
@@ -39,7 +53,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var bind = program.ultimate.bind
 
-    var mingle = new Static(program.argv)
+    var mingle = new Static(program.argv, coalesce(program.ultimate.format, "%s:%d"))
     var server = http.createServer(mingle.reactor.middleware)
     destroyer(server)
     async(function () {

@@ -23,6 +23,8 @@
                             "arguable":                     "5.2.x",
                             "cadence":                      "1.0.x",
                             "delta":                        "1.2.x",
+                            "extant":                       "1.0.x",
+                            "sprintf-js":                   "1.1.x",
                             "destructible":                 "0.17.x",
                             "prolific.logger":              "5.0.x",
                             "prolific.shuttle":             "15.0.x",
