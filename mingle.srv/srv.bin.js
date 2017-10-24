@@ -5,9 +5,24 @@
 
     options:
 
-        -n, --name      <stirng>        the fqdn of the service
-        -b, --bind      <address:port>  address and port to bind to
-        --help                          display help message
+        -b, --bind <address:port>
+
+          Address and port to bind to.
+
+        -f, --format <format>
+
+          A sprintf format for address and port. A `sprintf` is invoked with
+          with the pattern and host name and port as first and second arguments
+          respectively. The pattern defaults to "%s:%d" to create a result like
+          "127.0.0.1:8080".
+
+        -n, --name <stirng>
+
+          The fqdn of the service.
+
+        --help
+
+          Display help message.
 
     ___ $ ___ en_US ___
 
@@ -36,7 +51,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var shuttle = Shuttle.shuttle(program, logger)
 
-    var resolver = new Resolver(program.ultimate.name)
+    var resolver = new Resolver(program.ultimate.name, '%s:%d')
     var server = http.createServer(resolver.reactor.middlware)
     server.listen(bind.port, bind.address, async())
     program.on('shutdown', server.close.bind(server))

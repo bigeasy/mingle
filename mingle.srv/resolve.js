@@ -1,7 +1,8 @@
 var cadence = require('cadence')
 var logger = require('prolific.logger').createLogger('mingle.srv')
+var sprintf = require('sprintf-js').sprintf
 
-module.exports = cadence(function (async, dns, name) {
+module.exports = cadence(function (async, dns, name, format) {
     async([function () {
         dns.resolve(name, 'SRV', async())
     }, function (error) {
@@ -15,7 +16,7 @@ module.exports = cadence(function (async, dns, name) {
                 logger.error('resolve.A', { stack: error.stack, record: record })
                 return [ async.break, null ]
             }], function (address) {
-                return [ address + ':' + record.port ]
+                return [ sprintf(format, address, +record.port) ]
             })
         })(records)
     }, function (discovered) {
