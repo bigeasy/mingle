@@ -37,6 +37,42 @@
     },
     {
       "metadata": {
+        "deletionTimestamp": "x",
+        "labels": {
+          "name": "service"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "conduit",
+            "ports": [
+              {
+                "containerPort": 8486,
+                "name": "conduit"
+              }
+            ]
+          },
+          {
+            "name": "bucketizer"
+          }
+        ]
+      },
+      "status": {
+        "podIP": "10.2.73.7",
+        "containerStatuses": [
+          {
+            "name": "bucketizer"
+          },
+          {
+            "name": "conduit",
+            "ready": true
+          }
+        ]
+      }
+    },
+    {
+      "metadata": {
         "labels": {
           "name": "reinstatement"
         }
