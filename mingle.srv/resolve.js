@@ -10,14 +10,14 @@ module.exports = cadence(function (async, dns, name, format) {
         return [ async.break, [] ]
     }], function (records) {
         async.map(function (record) {
-            async([function () {
+            var block = async([function () {
                 dns.resolve(record.name, 'A', async())
             }, function (error) {
                 logger.error('resolve.A', { stack: error.stack, record: record })
-                return [ async.break, null ]
+                return [ block.break, null ]
             }], function (address) {
-                return [ sprintf(format, address, +record.port) ]
-            })
+                return [ block.break, sprintf(format, address, +record.port) ]
+            })()
         })(records)
     }, function (discovered) {
         return [ discovered ]
