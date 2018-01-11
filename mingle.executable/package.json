@@ -1,6 +1,6 @@
 {
     "name":                 "mingle",
-    "version":              "0.3.0",
+    "version":              "0.3.1",
     "description":
 
       "Root executable for standard Mingle processes.",
