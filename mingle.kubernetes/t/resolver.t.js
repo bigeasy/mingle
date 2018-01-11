@@ -25,9 +25,10 @@ function prove (async, assert) {
     var service = new Service
 
     var UserAgent = require('vizsla')
+    var Interlocutor = require('interlocutor')
 
     var parameters = {
-        ua: new UserAgent(service.reactor.middleware),
+        ua: new UserAgent().bind({ http: new Interlocutor(service.reactor.middleware) }),
         token: path.join(__dirname, 'fixtures/token'),
         ca: path.join(__dirname, 'fixtures/certs/ca-cert.pem'),
         bind: 8080,

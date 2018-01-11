@@ -24,6 +24,7 @@
                             "cadence":                      "1.0.x",
                             "delta":                        "1.2.x",
                             "destructible":                 "0.17.x",
+                            "interlocutor":                 "0.5.x",
                             "prolific.logger":              "5.0.x",
                             "prolific.shuttle":             "15.0.x",
                             "sprintf-js":                   "1.1.x",
@@ -34,7 +35,7 @@
     "devDependencies":
     {
                             "proof":                        "3.0.x",
-                            "vizsla":                       "9.0.x"
+                            "vizsla":                       "10.7.x"
     },
     "main":                 "kubernetes.bin",
     "scripts":
