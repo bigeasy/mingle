@@ -25,7 +25,7 @@
                             "extant":                       "1.0.x",
                             "reactor":                      "10.1.x",
                             "prolific.logger":              "5.0.x",
-                            "prolific.shuttle":             "15.0.x",
+                            "prolific.shuttle":             "17.0.x",
                             "sprintf-js":                   "1.1.x"
     },
     "devDependencies":
