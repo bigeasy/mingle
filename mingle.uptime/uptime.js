@@ -13,7 +13,7 @@ function Uptime (options) {
 Uptime.prototype.calculate = function (machines) {
     var now = this._Date.now()
     if (steadfast(this._previous, machines)) {
-        this.since += (now - this._lastChecked)
+       this.since += (now - this._lastChecked)
     } else {
         this.since = 0
     }
