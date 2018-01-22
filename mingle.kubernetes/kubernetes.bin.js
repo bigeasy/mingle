@@ -68,11 +68,6 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var destructible = new Destructible('mingle.kubernetes')
     program.on('shutdown', destructible.destroy.bind(destructible))
 
-    if (!program.ultimate.kubernetes) {
-        program.ultimate.kubernetes =
-            program.env.KUBERNETES_SERVICE_HOST + ':' + program.env.KUBERNETES_SERVICE_PORT
-    }
-
     var logger = require('prolific.logger').createLogger('mingle.kubernetes')
     var argv = require('./constructor.argv')
 
