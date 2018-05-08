@@ -72,7 +72,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var argv = require('./constructor.argv')
 
     var shuttle = Shuttle.shuttle(program, logger)
-    destructible.addDestructor('shuttle', shuttle, 'close')
+    destructible.destruct.wait(shuttle, 'close')
 
     var options = JSON.parse(JSON.stringify(program.ultimate))
 
@@ -85,7 +85,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
         destroyer(server)
         server.listen(resolver.bind.port, resolver.bind.address, async())
     }, function () {
-        destructible.addDestructor('http', server, 'destroy')
+        destructible.destruct.wait(server, 'destroy')
         delta(async()).ee(server).on('close')
         program.ready.unlatch()
     })
