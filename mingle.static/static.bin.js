@@ -49,7 +49,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var logger = require('prolific.logger').createLogger('mingle.static')
     var shuttle = Shuttle.shuttle(program, logger)
-    destructible.addDestructor('shuttle', shuttle, 'close')
+    destructible.destruct.wait(shuttle, 'close')
 
     var bind = program.ultimate.bind
 
@@ -57,7 +57,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var server = http.createServer(mingle.reactor.middleware)
     destroyer(server)
     async(function () {
-        destructible.addDestructor('http', server, 'destroy')
+        destructible.destruct.wait(server, 'destroy')
         server.listen(bind.port, bind.address, async())
     }, function () {
         logger.info('started', { parameters: program.ultimate })
