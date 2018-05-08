@@ -28,7 +28,7 @@
                             "prolific.logger":              "5.0.x",
                             "prolific.shuttle":             "17.0.x",
                             "sprintf-js":                   "1.1.x",
-                            "reactor":                      "10.1.x",
+                            "reactor":                      "10.2.x",
                             "rescue":                       "3.2.x",
                             "server-destroy":               "1.0.1"
     },
