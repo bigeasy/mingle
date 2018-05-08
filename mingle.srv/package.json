@@ -20,7 +20,7 @@
     },
     "dependencies":
     {
-                            "arguable":                     "6.1.x",
+                            "arguable":                     "6.4.x",
                             "cadence":                      "1.0.x",
                             "extant":                       "1.0.x",
                             "reactor":                      "10.1.x",
