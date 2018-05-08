@@ -25,7 +25,7 @@
                             "delta":                        "1.2.x",
                             "destructible":                 "0.17.x",
                             "interlocutor":                 "0.5.x",
-                            "prolific.logger":              "5.0.x",
+                            "prolific.logger":              "6.0.x",
                             "prolific.shuttle":             "18.0.x",
                             "sprintf-js":                   "1.1.x",
                             "reactor":                      "10.2.x",
