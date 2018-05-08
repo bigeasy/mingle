@@ -1,6 +1,6 @@
 {
     "name":                 "mingle.static",
-    "version":              "0.4.1",
+    "version":              "0.5.0",
     "description":
 
       "Service discovery that serves a static list of addresses.",
