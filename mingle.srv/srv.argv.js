@@ -5,10 +5,6 @@
 
     options:
 
-        -b, --bind <address:port>
-
-          Address and port to bind to.
-
         -f, --format <format>
 
           A sprintf format for address and port. A `sprintf` is invoked with
@@ -35,26 +31,19 @@
 
  */
 require('arguable')(module, require('cadence')(function (async, program) {
-    var http = require('http')
-    var coalesce = require('extant')
-
-    var Shuttle = require('prolific.shuttle')
-
-    var Resolver = require('./middleware.js')
-
-    var logger = require('prolific.logger').createLogger('mingle.srv')
-
     program.helpIf(program.ultimate.help)
-    program.required('bind', 'name')
+    program.required('name')
     program.validate(require('arguable/bindable'), 'bind')
 
-    var bind = program.ultimate.bind
+    var coalesce = require('extant')
+    var format = coalesce(program.ultimate.format, '%s:%d')
+    var dns = require('dns')
 
-    var shuttle = Shuttle.shuttle(program, logger)
-
-    var resolver = new Resolver(program.ultimate.name, coalesce(program.ultimate.format, '%s:%d'))
-    var server = http.createServer(resolver.reactor.middlware)
-    server.listen(bind.port, bind.address, async())
-    program.on('shutdown', server.close.bind(server))
-    program.on('shutdown', shuttle.close.bind(server))
+    var resolve = require('./resolve')
+    var name = program.ultimate.name
+    return {
+        resolve: function (callback) {
+            resolve(dns, name, format, callback)
+        }
+    }
 }))
