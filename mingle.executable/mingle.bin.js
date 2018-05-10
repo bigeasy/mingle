@@ -22,6 +22,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var Destructible = require('destructible')
     var destructible = new Destructible('t/mingle.bin')
+    program.on('shutdown', destructible.destroy.bind(destructible))
 
     var constructor = require('mingle.' + program.argv.shift())
 
@@ -31,10 +32,10 @@ require('arguable')(module, require('cadence')(function (async, program) {
         if (program.ultimate.bind == 'olio') {
             destructible.monitor('server', require('./olio'), program, resolver, async())
         } else {
-            destructible.monitor('server', require('./http'), resolver, async())
+            program.validate(require('arguable/bindable'), 'bind')
+            destructible.monitor('server', require('./http'), program, resolver, async())
         }
     }, function () {
-        console.log('most ready')
         program.ready.unlatch()
     })
 }))

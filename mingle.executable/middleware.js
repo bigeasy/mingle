@@ -3,10 +3,6 @@ var Reactor = require('reactor')
 
 function Middleware (resolver) {
     this._resolver = resolver
-    this._addresses = addresses.map(function (address) {
-        var pair = address.split(':')
-        return sprintf(format, pair[0], +pair[1])
-    })
     this.reactor = new Reactor(this, function (dispatcher) {
         dispatcher.dispatch('GET /', 'index')
         dispatcher.dispatch('GET /discover', 'discover')
@@ -15,7 +11,7 @@ function Middleware (resolver) {
 }
 
 Middleware.prototype.index = cadence(function () {
-    return this._resolver.index
+    return [ 200, { 'content-type': 'text/plain' }, this._resolver.index ]
 })
 
 Middleware.prototype.discover = function (request, callback) {
