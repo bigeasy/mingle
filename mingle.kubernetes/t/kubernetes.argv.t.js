@@ -40,12 +40,12 @@ function prove (async, assert) {
         port: 'conduit'
     }
 
-    var argv = require('../constructor.argv')
+    var argv = require('../kubernetes.argv')
     var exec = require('child_process').exec
     async(function () {
         setTimeout(async(), 250)
     }, [function () {
-        argv([parameters, { token: path.join(__dirname, 'x') }], async())
+        argv([ parameters, { token: path.join(__dirname, 'x') }], async())
     }, function (error) {
         assert(error.key, 'token file not found', 'cannot find token')
     }], [function () {
