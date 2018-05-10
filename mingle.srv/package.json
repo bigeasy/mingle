@@ -32,7 +32,7 @@
     {
                             "proof":                        "3.0.x"
     },
-    "main":                 "srv.bin",
+    "main":                 "srv.argv",
     "scripts":
     {
                             "test": "proof test t/*.t.js"
