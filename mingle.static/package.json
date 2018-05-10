@@ -35,7 +35,7 @@
     {
                             "proof":                        "3.0.x"
     },
-    "main":                 "static.bin",
+    "main":                 "static.argv",
     "scripts":
     {
                             "test": "proof test t/*.t.js"
