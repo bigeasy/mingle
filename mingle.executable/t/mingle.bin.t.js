@@ -39,12 +39,7 @@ function prove (async, okay) {
                 throw error
             }], function (response) {
                 okay(response, [], 'invoke olio')
-                console.log(response)
-                try {
                 io.emit('SIGTERM')
-                } catch (e) {
-                    console.log(e.stack)
-                }
             })
         })
     }, function () {
@@ -54,15 +49,14 @@ function prove (async, okay) {
             io = bin([ '--bind', '127.0.0.1:8081', 'test' ], {}, async())
             async(function () {
                 io.ready.wait(async())
-                console.log('here')
             }, function () {
-                ua.fetch({ url: 'http://127.0.0.1:8081/' }, async())
+                ua.fetch({ url: 'http://127.0.0.1:8081/', parse: 'text' }, async())
             }, function (body) {
                 okay(body, 'Mingle Example API\n', 'index')
-                ua.fetch({ url: 'http://127.0.0.1:8081/discover' }, async())
-            }, function (body) {
+                ua.fetch({ url: 'http://127.0.0.1:8081/discover', parse: 'json', raise: true }, async())
+            }, function (body, response) {
                 okay(body, [], 'discover')
-                ua.fetch({ url: 'http://127.0.0.1:8081/health' }, async())
+                ua.fetch({ url: 'http://127.0.0.1:8081/health', parse: 'json' }, async())
             }, function (body) {
                 okay(body, {
                     http: { occupied: 1, waiting: 0, rejecting: 0, turnstiles: 24 }
