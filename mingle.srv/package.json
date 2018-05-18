@@ -23,9 +23,6 @@
                             "arguable":                     "6.4.x",
                             "cadence":                      "1.0.x",
                             "extant":                       "1.0.x",
-                            "reactor":                      "10.2.x",
-                            "prolific.logger":              "6.0.x",
-                            "prolific.shuttle":             "18.0.x",
                             "sprintf-js":                   "1.1.x"
     },
     "devDependencies":
