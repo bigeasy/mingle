@@ -30,7 +30,7 @@
     {
                             "interlocutor":                 "0.5.x",
                             "proof":                        "3.0.x",
-                            "vizsla":                       "12.2.x"
+                            "vizsla":                       "12.8.x"
     },
     "main":                 "kubernetes.argv",
     "scripts":

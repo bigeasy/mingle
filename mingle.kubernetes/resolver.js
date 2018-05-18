@@ -23,7 +23,8 @@ function Resolver (options) {
 Resolver.prototype.resolve = cadence(function (async) {
     async(function () {
         this._ua.fetch(this._session, {
-            url: '/api/v1/namespaces/' + this._namespace + '/pods'
+            url: '/api/v1/namespaces/' + this._namespace + '/pods',
+            parse: 'json'
         }, async())
     }, function (body) {
         return [ this._select(body) ]
