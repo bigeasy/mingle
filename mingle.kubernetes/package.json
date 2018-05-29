@@ -23,13 +23,13 @@
                             "arguable":                     "6.4.x",
                             "cadence":                      "1.0.x",
                             "sprintf-js":                   "1.1.x",
-                            "reactor":                      "10.2.x",
                             "rescue":                       "3.2.x"
     },
     "devDependencies":
     {
                             "interlocutor":                 "0.5.x",
                             "proof":                        "3.0.x",
+                            "reactor":                      "10.3.x",
                             "vizsla":                       "12.9.x"
     },
     "main":                 "kubernetes.argv",
