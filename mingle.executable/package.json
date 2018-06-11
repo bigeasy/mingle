@@ -24,7 +24,7 @@
                             "cadence":                      "1.0.x",
                             "conduit":                      "2.9.x",
                             "delta":                        "1.2.x",
-                            "destructible":                 "0.28.x",
+                            "destructible":                 "0.30.x",
                             "olio":                         "0.7.x",
                             "reactor":                      "10.3.0",
                             "server-destroy":               "1.0.1"
