@@ -22,7 +22,7 @@
     {
                             "arguable":                     "6.5.x",
                             "cadence":                      "1.0.x",
-                            "conduit":                      "2.9.x",
+                            "conduit":                      "2.10.x",
                             "delta":                        "1.2.x",
                             "destructible":                 "0.30.x",
                             "olio":                         "0.7.x",
