@@ -29,7 +29,7 @@
     {
                             "interlocutor":                 "0.5.x",
                             "proof":                        "3.0.x",
-                            "reactor":                      "10.3.x",
+                            "reactor":                      "10.4.x",
                             "vizsla":                       "12.9.x"
     },
     "main":                 "kubernetes.argv",
