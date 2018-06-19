@@ -26,7 +26,7 @@
                             "delta":                        "1.4.x",
                             "destructible":                 "0.30.x",
                             "olio":                         "0.8.x",
-                            "reactor":                      "10.4.1",
+                            "reactor":                      "10.4.x",
                             "server-destroy":               "1.0.1"
     },
     "devDependencies":
