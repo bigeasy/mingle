@@ -23,7 +23,7 @@
                             "arguable":                     "6.5.x",
                             "cadence":                      "1.0.x",
                             "conduit":                      "2.10.x",
-                            "delta":                        "1.2.x",
+                            "delta":                        "1.4.x",
                             "destructible":                 "0.30.x",
                             "olio":                         "0.8.x",
                             "reactor":                      "10.4.1",
