@@ -1,6 +1,6 @@
 {
     "name":                 "mingle.kubernetes",
-    "version":              "0.5.3",
+    "version":              "0.5.4",
     "description":
 
       "Service discovery using Kubernetes API pod listing.",
