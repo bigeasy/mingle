@@ -53,7 +53,7 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     program.required('namespace', 'pod', 'container', 'kubernetes')
 
-    var options = defaults(program.ultimate, program.attribute)
+    var options = defaults(program.ultimate, program.attributes)
 
     async(function () {
         async([function () {
