@@ -28,10 +28,8 @@ function prove (async, assert) {
     var Interlocutor = require('interlocutor')
 
     var parameters = {
-        ua: new UserAgent().bind({ http: new Interlocutor(service.reactor.middleware) }),
         token: path.join(__dirname, 'fixtures/token'),
         ca: path.join(__dirname, 'fixtures/certs/ca-cert.pem'),
-        bind: 8080,
         format: '%s:%d',
         kubernetes: '127.0.0.1:8080',
         namespace: 'namespace',
@@ -53,7 +51,9 @@ function prove (async, assert) {
     }, function (error) {
         assert(error.key, 'ca file not found', 'cannot find ca file')
     }], function () {
-        argv(parameters, async())
+        argv(parameters, {
+            attributes: { ua: new UserAgent().bind({ http: new Interlocutor(service.reactor.middleware) }) }
+        }, async())
     }, function (resolver) {
         async(function () {
             resolver.resolve(async())
