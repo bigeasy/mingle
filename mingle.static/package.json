@@ -1,6 +1,6 @@
 {
     "name":                 "mingle.static",
-    "version":              "0.6.1",
+    "version":              "0.7.0",
     "description":
 
       "Service discovery that serves a static list of addresses.",
@@ -20,7 +20,7 @@
     },
     "dependencies":
     {
-                            "arguable":                     "6.4.x",
+                            "arguable":                     "6.7.x",
                             "cadence":                      "1.0.x",
                             "extant":                       "1.0.x",
                             "sprintf-js":                   "1.1.x"

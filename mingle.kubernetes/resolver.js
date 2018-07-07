@@ -1,8 +1,5 @@
 var cadence = require('cadence')
-var fs = require('fs')
 var assert = require('assert')
-var rescue = require('rescue')
-var arguable = require('arguable')
 var sprintf = require('sprintf-js').sprintf
 
 function Resolver (options) {

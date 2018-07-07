@@ -1,6 +1,8 @@
-module.exports = function (ultimate) {
+var UserAgent = require('vizsla')
+
+module.exports = function (ultimate, attributes) {
     return {
-        ua: ultimate.ua,
+        ua: attributes.ua || new UserAgent,
         bind: ultimate.bind,
         format: ultimate.format || '%s:%d',
         token: ultimate.token || '/var/run/secrets/kubernetes.io/serviceaccount/token',

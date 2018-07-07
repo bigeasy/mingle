@@ -13,7 +13,7 @@ function prove (assert) {
         container: 'mingle',
         port: 'mingle',
         kubernetes: '127.0.0.1:8080'
-    }), {
+    }, { ua: {} }), {
         ua: {},
         format: 'http://%s:%d/',
         bind: { address: '0.0.0.0', port: 8888 },
@@ -32,7 +32,7 @@ function prove (assert) {
         pod: 'pod',
         container: 'noport',
         kubernetes: '127.0.0.1:8080'
-    }), {
+    }, { ua: {} }), {
         ua: {},
         format: '%s:%d',
         bind: { address: '0.0.0.0', port: 8888 },

@@ -1,6 +1,6 @@
 {
     "name":                 "mingle.kubernetes",
-    "version":              "0.5.4",
+    "version":              "0.6.0",
     "description":
 
       "Service discovery using Kubernetes API pod listing.",
@@ -20,7 +20,7 @@
     },
     "dependencies":
     {
-                            "arguable":                     "6.6.x",
+                            "arguable":                     "6.7.x",
                             "cadence":                      "1.0.x",
                             "sprintf-js":                   "1.1.x",
                             "rescue":                       "3.2.x"

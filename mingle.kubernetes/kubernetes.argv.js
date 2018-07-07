@@ -52,9 +52,8 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var defaults = require('./defaults')
 
     program.required('namespace', 'pod', 'container', 'kubernetes')
-    program.validate(require('arguable/bindable'), 'bind')
 
-    var options = defaults(program.ultimate)
+    var options = defaults(program.ultimate, program.attributes)
 
     async(function () {
         async([function () {
