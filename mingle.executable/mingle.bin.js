@@ -24,6 +24,12 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var destructible = new Destructible('t/mingle.bin')
     program.on('shutdown', destructible.destroy.bind(destructible))
 
+    var logger = require('prolific.logger').createLogger('mingle')
+
+    var Shuttle = require('prolific.shuttle')
+    var shuttle = Shuttle.shuttle(program, shuttle)
+    destructible.destruct.wait(shuttle, 'close')
+
     var constructor = require('mingle.' + program.argv.shift())
 
     async(function () {
