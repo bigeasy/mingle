@@ -27,7 +27,7 @@
                             "destructible":                 "0.30.x",
                             "olio":                         "0.10.x",
                             "reactor":                      "10.4.x",
-                            "prolific.shuttle":             "18.0.x",
+                            "prolific.shuttle":             "18.1.x",
                             "server-destroy":               "1.0.1"
     },
     "devDependencies":
