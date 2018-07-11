@@ -28,18 +28,18 @@ function prove (async, okay) {
                 destructible.destruct.wait(function () { caller.inbox.push(null) })
                 mock.sender([ 'program', 'caller' ], 0, caller)
                 return [ caller ]
-            })
-        }, function (caller) {
-            async(function () {
-                io.ready.wait(async())
-            }, [function () {
-                caller.invoke({}, async())
-            }, function (error) {
-                console.log(error.stack)
-                throw error
-            }], function (response) {
-                okay(response, [], 'invoke olio')
-                io.emit('SIGTERM')
+            }, function (caller) {
+                async(function () {
+                    io.ready.wait(async())
+                }, [function () {
+                    caller.invoke({}, async())
+                }, function (error) {
+                    console.log(error.stack)
+                    throw error
+                }], function (response) {
+                    okay(response, [], 'invoke olio')
+                    io.emit('SIGTERM')
+                })
             })
         })
     }, function () {

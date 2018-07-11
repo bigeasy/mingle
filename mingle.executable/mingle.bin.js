@@ -27,12 +27,16 @@ require('arguable')(module, require('cadence')(function (async, program) {
     var logger = require('prolific.logger').createLogger('mingle')
 
     var Shuttle = require('prolific.shuttle')
-    var shuttle = Shuttle.shuttle(program, shuttle)
+    var shuttle = Shuttle.shuttle(program, logger)
     destructible.destruct.wait(shuttle, 'close')
 
     var constructor = require('mingle.' + program.argv.shift())
 
-    async(function () {
+    destructible.completed.wait(async())
+
+    async([function () {
+        destructible.destroy()
+    }], function () {
         constructor(program.argv, async())
     }, function (resolver) {
         if (program.ultimate.bind == 'olio') {
@@ -43,5 +47,6 @@ require('arguable')(module, require('cadence')(function (async, program) {
         }
     }, function () {
         program.ready.unlatch()
+        destructible.completed.wait(async())
     })
 }))
