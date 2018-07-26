@@ -25,9 +25,9 @@
                             "conduit":                      "2.10.x",
                             "delta":                        "1.4.x",
                             "destructible":                 "0.30.x",
-                            "olio":                         "0.10.x",
+                            "olio":                         "0.11.x",
                             "reactor":                      "10.4.x",
-                            "prolific.shuttle":             "18.1.x",
+                            "prolific.shuttle":             "20.0.x",
                             "server-destroy":               "1.0.1"
     },
     "devDependencies":
