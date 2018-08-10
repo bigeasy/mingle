@@ -21,12 +21,12 @@ function prove (async, okay) {
             async(function () {
                 mock.ready.wait(async())
             }, function () {
-                mock.initialize([ 'program', 'self' ], 0)
+                mock.initialize('self', 0)
             }, function () {
                 destructible.monitor('caller', Caller, async())
             }, function (caller) {
                 destructible.destruct.wait(function () { caller.inbox.push(null) })
-                mock.sender([ 'program', 'caller' ], 0, caller)
+                mock.sender('caller', 0, caller)
                 return [ caller ]
             }, function (caller) {
                 async(function () {
