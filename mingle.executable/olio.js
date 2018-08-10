@@ -5,7 +5,7 @@ var Olio = require('olio')
 module.exports = cadence(function (async, destructible, ee, resolver) {
     async(function () {
         destructible.monitor('olio', Olio, ee, function (constructor) {
-            constructor.receiver = function (destructible, argv, callback) {
+            constructor.receiver = function (destructible, from, to, callback) {
                 destructible.monitor('procedure', Procedure, function (envelope, callback) {
                     resolver.resolve(callback)
                 }, callback)
