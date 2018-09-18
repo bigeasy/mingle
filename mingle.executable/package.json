@@ -24,7 +24,7 @@
                             "cadence":                      "1.0.x",
                             "conduit":                      "2.10.x",
                             "delta":                        "1.4.x",
-                            "destructible":                 "0.32.x",
+                            "destructible":                 "0.33.x",
                             "olio":                         "0.12.x",
                             "reactor":                      "10.4.x",
                             "prolific.shuttle":             "20.2.x",
