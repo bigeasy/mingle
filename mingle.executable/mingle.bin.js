@@ -17,7 +17,7 @@
 
     ___ . ___
 */
-require('arguable')(module, require('cadence')(function (async, program) {
+require('arguable')(module, function (program, callback) {
     program.helpIf(program.ultimate.help)
 
     var Destructible = require('destructible')
@@ -26,27 +26,28 @@ require('arguable')(module, require('cadence')(function (async, program) {
 
     var logger = require('prolific.logger').createLogger('mingle')
 
-    var Shuttle = require('prolific.shuttle')
-    var shuttle = Shuttle.shuttle(program, logger)
+    var shuttle = require('foremost')('prolific.shuttle')
+    shuttle.start(logger)
     destructible.destruct.wait(shuttle, 'close')
 
     var constructor = require('mingle.' + program.argv.shift())
 
-    destructible.completed.wait(async())
+    destructible.completed.wait(callback)
 
-    async([function () {
-        destructible.destroy()
-    }], function () {
-        constructor(program.argv, async())
-    }, function (resolver) {
-        if (program.ultimate.bind == 'olio') {
-            destructible.monitor('server', require('./olio'), program, resolver, async())
-        } else {
-            program.validate(require('arguable/bindable'), 'bind')
-            destructible.monitor('server', require('./http'), program, resolver, async())
-        }
-    }, function () {
-        program.ready.unlatch()
-        destructible.completed.wait(async())
-    })
-}))
+    var cadence = require('cadence')
+
+    cadence(function (async) {
+        async(function () {
+            constructor(program.argv, async())
+        }, function (resolver) {
+            if (program.ultimate.bind == 'olio') {
+                destructible.monitor('server', require('./olio'), resolver, async())
+            } else {
+                program.validate(require('arguable/bindable'), 'bind')
+                destructible.monitor('server', require('./http'), program, resolver, async())
+            }
+        }, function () {
+            program.ready.unlatch()
+        })
+    })(destructible.monitor('initialize', true))
+})
