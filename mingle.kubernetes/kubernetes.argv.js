@@ -47,7 +47,7 @@
  */
 require('arguable')(module, require('cadence')(function (async, program) {
     var Resolver = require('./resolver')
-    var rescue = require('rescue')
+    var rescue = require('rescue/redux')
     var fs = require('fs')
     var defaults = require('./defaults')
 
