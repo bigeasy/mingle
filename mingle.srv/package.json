@@ -20,10 +20,10 @@
     },
     "dependencies":
     {
-                            "arguable":                     "6.7.x",
+                            "arguable":                     "6.8.x",
                             "cadence":                      "1.0.x",
                             "extant":                       "1.0.x",
-                            "prolific.logger":              "6.0.x",
+                            "prolific.logger":              "8.1.x",
                             "sprintf-js":                   "1.1.x"
     },
     "devDependencies":
