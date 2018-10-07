@@ -21,7 +21,7 @@ require('arguable')(module, function (program, callback) {
     program.helpIf(program.ultimate.help)
 
     var Destructible = require('destructible')
-    var destructible = new Destructible('t/mingle.bin')
+    var destructible = new Destructible('mingle.bin')
     program.on('shutdown', destructible.destroy.bind(destructible))
 
     var logger = require('prolific.logger').createLogger('mingle')
