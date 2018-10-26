@@ -28,7 +28,7 @@
                             "foremost":                     "0.0.x",
                             "olio":                         "0.17.x",
                             "reactor":                      "10.5.x",
-                            "prolific.shuttle":             "20.8.x",
+                            "prolific.shuttle":             "20.10.x",
                             "server-destroy":               "1.0.1"
     },
     "devDependencies":
