@@ -24,7 +24,7 @@
                             "cadence":                      "1.0.x",
                             "conduit":                      "2.16.x",
                             "delta":                        "1.4.x",
-                            "destructible":                 "0.34.x",
+                            "destructible":                 "0.35.x",
                             "foremost":                     "0.0.x",
                             "olio":                         "0.20.x",
                             "reactor":                      "10.7.x",
