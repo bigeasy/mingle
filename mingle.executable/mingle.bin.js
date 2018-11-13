@@ -40,12 +40,8 @@ require('arguable')(module, function (program, callback) {
         async(function () {
             constructor(program.argv, async())
         }, function (resolver) {
-            if (program.ultimate.bind == 'olio') {
-                destructible.monitor('server', require('./olio'), resolver, async())
-            } else {
-                program.validate(require('arguable/bindable'), 'bind')
-                destructible.monitor('server', require('./http'), program, resolver, async())
-            }
+            program.validate(require('arguable/bindable'), 'bind')
+            destructible.monitor('server', require('./http'), program, resolver, async())
         }, function () {
             program.ready.unlatch()
         })

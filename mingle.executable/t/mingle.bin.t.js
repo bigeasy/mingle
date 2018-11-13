@@ -1,4 +1,4 @@
-require('proof')(4, prove)
+require('proof')(3, prove)
 
 function prove (okay, callback) {
     var bin = require('..'), io
@@ -13,36 +13,8 @@ function prove (okay, callback) {
 
     cadence(function (async) {
         async(function () {
-            async(function () {
-                io = bin([ '--bind', 'olio', 'test' ], {}, async())
-                var mock = new Mock
-                async(function () {
-                    mock.ready.wait(async())
-                }, function () {
-                    mock.initialize('self', 0)
-                }, function () {
-                    destructible.monitor('caller', Caller, async())
-                }, function (caller) {
-                    destructible.destruct.wait(function () { caller.inbox.push(null) })
-                    mock.sender('caller', 0, caller)
-                    return [ caller ]
-                }, function (caller) {
-                    async(function () {
-                        io.ready.wait(async())
-                    }, [function () {
-                        caller.invoke({}, async())
-                    }, function (error) {
-                        console.log(error.stack)
-                        throw error
-                    }], function (response) {
-                        okay(response, [], 'invoke olio')
-                        io.emit('SIGTERM')
-                    })
-                })
-            })
-        }, function () {
-            var Vizsla = require('vizsla')
-            var ua = new Vizsla
+            var UserAgent = require('vizsla')
+            var ua = new UserAgent
             async(function () {
                 io = bin([ '--bind', '127.0.0.1:8081', 'test' ], {}, async())
                 async(function () {
