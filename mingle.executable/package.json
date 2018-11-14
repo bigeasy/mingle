@@ -22,12 +22,12 @@
     {
                             "arguable":                     "6.8.x",
                             "cadence":                      "1.0.x",
-                            "conduit":                      "2.16.x",
+                            "conduit":                      "2.23.x",
                             "delta":                        "1.4.x",
                             "destructible":                 "0.35.x",
                             "foremost":                     "0.0.x",
-                            "olio":                         "0.20.x",
-                            "reactor":                      "10.7.x",
+                            "olio":                         "0.25.x",
+                            "reactor":                      "10.8.x",
                             "prolific.shuttle":             "20.12.x",
                             "server-destroy":               "1.0.1"
     },

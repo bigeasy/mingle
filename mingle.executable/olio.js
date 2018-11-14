@@ -1,15 +1,19 @@
-var Procedure = require('conduit/procedure')
 var cadence = require('cadence')
-var Olio = require('olio')
+var Conduit = require('conduit/conduit')
 
-module.exports = cadence(function (async, destructible, resolver) {
+module.exports = cadence(function (async, destructible, binder, properties) {
+    console.log('------', properties)
+    var constructor = require(properties.module)
+    delete properties.module
     async(function () {
-        destructible.monitor('olio', Olio, cadence(function (async, destructible) {
-            destructible.monitor('procedure', Procedure, function (envelope, callback) {
-                resolver.resolve(callback)
-            }, async())
+        constructor(properties, async())
+    }, function (resolver) {
+        binder.listen(cadence(function (async, destructible, inbox, outbox) {
+            destructible.monitor('conduit', Conduit, inbox, outbox, cadence(function (async, request, inbox, outbox) {
+                resolver.resolve(async())
+            }), async())
         }), async())
-    }, function () {
-        return []
+    }, function (olio) {
+        return [ binder.index ]
     })
 })
