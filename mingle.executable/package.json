@@ -26,7 +26,7 @@
                             "delta":                        "1.4.x",
                             "destructible":                 "0.35.x",
                             "foremost":                     "0.0.x",
-                            "olio":                         "0.28.x",
+                            "olio":                         "0.31.x",
                             "reactor":                      "10.8.x",
                             "prolific.shuttle":             "20.12.x",
                             "server-destroy":               "1.0.1"
