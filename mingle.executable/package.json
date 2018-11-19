@@ -27,7 +27,7 @@
                             "destructible":                 "0.36.x",
                             "foremost":                     "0.0.x",
                             "olio":                         "0.34.x",
-                            "reactor":                      "10.8.x",
+                            "reactor":                      "10.9.x",
                             "prolific.shuttle":             "20.12.x",
                             "server-destroy":               "1.0.1"
     },
