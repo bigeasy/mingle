@@ -34,13 +34,7 @@ function prove (okay, callback) {
         }, function (children) {
             children.client[0].processes[0].conduit.connect({}).inbox.dequeue(async())
         }, function (response) {
-            okay({
-                isArray: Array.isArray(response),
-                response: response
-            }, {
-                isArray: true,
-                response: []
-            }, 'olio')
+            okay(response, [ '127.0.0.1:8888' ], 'olio')
         })
     })(destructible.monitor('test'))
 }

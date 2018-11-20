@@ -12,13 +12,10 @@ Listener.prototype.connect = cadence(function (async, destructible, inbox, outbo
     }), async())
 })
 
-module.exports = cadence(function (async, destructible, binder, properties) {
-    var constructor = require(properties.module)
-    delete properties.module
-    var argv = coalesce(properties.argv, [])
-    delete properties.argv
+module.exports = cadence(function (async, destructible, olio, properties) {
+    var Resolver = require(properties.module)
     async(function () {
-        constructor([ properties, argv ], async())
+        destructible.monitor('resolver', Resolver, properties, async())
     }, function (resolver) {
         return new Listener(resolver)
     })
