@@ -1,8 +1,8 @@
 require('proof')(2, prove)
 
-function prove (assert) {
+function prove (okay) {
     var defaults = require('../defaults')
-    assert(defaults({
+    okay(defaults({
         ua: {},
         format: 'http://%s:%d/',
         bind: { address: '0.0.0.0', port: 8888 },
@@ -25,7 +25,7 @@ function prove (assert) {
         port: 'mingle',
         kubernetes: '127.0.0.1:8080'
     }, 'no defaults')
-    assert(defaults({
+    okay(defaults({
         ua: {},
         bind: { address: '0.0.0.0', port: 8888 },
         namespace: 'namespace',
