@@ -6,7 +6,7 @@ function prove (okay, callback) {
 
     destructible.completed.wait(callback)
 
-    var Resolver = require('../static.argv')
+    var Resolver = require('../static')
 
     var cadence = require('cadence')
 
