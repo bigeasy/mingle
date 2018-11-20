@@ -1,0 +1,40 @@
+{
+    "name":                 "mingle.http",
+    "version":              "9.9.9",
+    "description":
+
+      "HTTP interface to Mingle service discovery.",
+
+    "keywords":
+    [
+                            "consensus", "discovery"
+    ],
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "homepage":             "https://github.com/bigeasy/mingle",
+    "bugs":                 "https://github.com/bigeasy/mingle/issues",
+    "license":              "MIT",
+    "repository":
+    {
+                            "type": "git",
+                            "url": "bigeasy/mingle"
+    },
+    "dependencies":
+    {
+                            "cadence":                      "1.0.x",
+                            "delta":                        "1.4.x",
+                            "reactor":                      "10.9.x",
+                            "server-destroy":               "1.0.1"
+    },
+    "devDependencies":
+    {
+                            "destructible":                 "0.36.x",
+                            "olio":                         "0.34.x",
+                            "proof":                        "3.0.x",
+                            "vizsla":                       "12.15.x"
+    },
+    "main":                 "static.argv",
+    "scripts":
+    {
+                            "test": "proof test t/*.t.js"
+    }
+}
