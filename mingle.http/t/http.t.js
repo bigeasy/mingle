@@ -4,6 +4,8 @@ function prove (okay, callback) {
     var Destructible = require('destructible')
     var destructible = new Destructible('t/http.t')
 
+    var path = require('path')
+
     destructible.completed.wait(callback)
 
     var cadence = require('cadence')
@@ -17,11 +19,11 @@ function prove (okay, callback) {
                 socket: 't/socket',
                 children: {
                     http: {
-                        path: './olio',
+                        path: path.resolve(__dirname, '../olio.js'),
                         properties: { port: 8888, iface: '127.0.0.1' }
                     },
                     mingle: {
-                        path: './t/mingle',
+                        path: path.resolve(__dirname, './mingle.js'),
                         properties: {}
                     }
                 }
