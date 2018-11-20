@@ -1,6 +1,6 @@
 {
     "name":                 "mingle.srv",
-    "version":              "0.6.0",
+    "version":              "0.7.0",
     "description":
 
       "Service discovery using SRV DNS record.",
