@@ -1,15 +1,25 @@
-require('proof')(1, require('cadence')(prove))
+require('proof')(1, prove)
 
-function prove (async, okay) {
-    var bin = require('../srv.argv')
-    var program
-    async(function () {
-        bin([ '--name', '_mingle._tcp.mingle.prettyrobots.com' ], async())
-    }, function (resolver) {
+function prove (okay, callback) {
+    var Destructible = require('destructible')
+    var destructible = new Destructible('t/srv.t')
+
+    destructible.completed.wait(callback)
+
+    var cadence = require('cadence')
+
+    var Resolver = require('..')
+
+    cadence(function (async) {
         async(function () {
+            destructible.monitor('resolver', Resolver, {
+                name: '_mingle._tcp.mingle.prettyrobots.com',
+                format: 'http://%s:%d/'
+            }, async())
+        }, function (resolver) {
             resolver.resolve(async())
         }, function (resolved) {
-            okay(resolved, [ '52.70.58.47:1337' ], 'resolved')
+            okay(resolved, [ 'http://52.70.58.47:1337/' ], 'resolved')
         })
-    })
+    })(destructible.monitor('test'))
 }
