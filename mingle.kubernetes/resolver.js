@@ -21,7 +21,8 @@ Resolver.prototype.resolve = cadence(function (async) {
     async(function () {
         this._ua.fetch(this._session, {
             url: '/api/v1/namespaces/' + this._namespace + '/pods',
-            parse: 'json'
+            parse: 'json',
+            nullify: true
         }, async())
     }, function (body) {
         return [ this._select(body) ]
@@ -29,6 +30,9 @@ Resolver.prototype.resolve = cadence(function (async) {
 })
 
 Resolver.prototype._select = function (json) {
+    if (json == null) {
+        return []
+    }
     var sought = { pod: this._pod, container: this._container, port: this._port }
     var pod = this._pod, container = this._container
     var items = json.items.filter(function (item) {

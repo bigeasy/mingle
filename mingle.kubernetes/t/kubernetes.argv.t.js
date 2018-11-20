@@ -1,6 +1,11 @@
-require('proof')(3, require('cadence')(prove))
+require('proof')(4, prove)
 
-function prove (async, assert) {
+function prove (okay, callback) {
+    var Destructible = require('destructible')
+    var destructible = new Destructible('t/kubernetes.t')
+
+    destructible.completed.wait(callback)
+
     var Reactor = require('reactor')
     var cadence = require('cadence')
     var path = require('path')
@@ -12,9 +17,13 @@ function prove (async, assert) {
         this.reactor = new Reactor(this, function (dispatcher) {
             dispatcher.dispatch('GET /api/v1/namespaces/namespace/pods', 'pods')
         })
+        this.count = 0
     }
 
     Service.prototype.pods = cadence(function (async) {
+        if (this.count++ == 0) {
+            return 503
+        }
         async(function () {
             fs.readFile(path.join(__dirname, 'fixtures', 'pods.json'), 'utf8', async())
         }, function (json) {
@@ -27,9 +36,9 @@ function prove (async, assert) {
     var UserAgent = require('vizsla')
     var Interlocutor = require('interlocutor')
 
-    var parameters = {
-        token: path.join(__dirname, 'fixtures/token'),
-        ca: path.join(__dirname, 'fixtures/certs/ca-cert.pem'),
+    var properties = {
+        token: null,
+        ca: null,
         format: '%s:%d',
         kubernetes: '127.0.0.1:8080',
         namespace: 'namespace',
@@ -38,27 +47,37 @@ function prove (async, assert) {
         port: 'conduit'
     }
 
-    var argv = require('../kubernetes.argv')
-    var exec = require('child_process').exec
-    async(function () {
-        setTimeout(async(), 250)
-    }, [function () {
-        argv([ parameters, { token: path.join(__dirname, 'x') }], async())
-    }, function (error) {
-        assert(error.key, 'token file not found', 'cannot find token')
-    }], [function () {
-        argv([parameters, { ca: path.join(__dirname, 'x') }], async())
-    }, function (error) {
-        assert(error.key, 'ca file not found', 'cannot find ca file')
-    }], function () {
-        argv(parameters, {
-            attributes: { ua: new UserAgent().bind({ http: new Interlocutor(service.reactor.middleware) }) }
-        }, async())
-    }, function (resolver) {
+    var Resolver = require('../kubernetes.argv')
+
+    cadence(function (async) {
         async(function () {
-            resolver.resolve(async())
-        }, function (json) {
-            assert(json, [ '10.2.73.7:8486' ], 'select')
+            setTimeout(async(), 250)
+        }, [function () {
+            properties.token = path.join(__dirname, 'x')
+            var destructible = new Destructible('token')
+            destructible.monitor('resolver', Resolver, properties, async())
+        }, function (error) {
+            okay(error.label, 'token file not found',  'cannot find token')
+        }], [function () {
+            properties.token = path.join(__dirname, 'fixtures/token'),
+            properties.ca = path.join(__dirname, 'x')
+            var destructible = new Destructible('ca')
+            destructible.monitor('resolver', Resolver, properties, async())
+        }, function (error) {
+            okay(error.label, 'ca file not found', 'cannot find ca file')
+        }], function () {
+            properties.ca = path.join(__dirname, 'fixtures/certs/ca-cert.pem')
+            properties.ua = new UserAgent().bind({ http: new Interlocutor(service.reactor.middleware) })
+            destructible.monitor('resolver', Resolver, properties, async())
+        }, function (resolver) {
+            async(function () {
+                resolver.resolve(async())
+            }, function (json) {
+                okay(json, [], 'select error')
+                resolver.resolve(async())
+            }, function (json) {
+                okay(json, [ '10.2.73.7:8486' ], 'select')
+            })
         })
-    })
+    })(destructible.monitor('test'))
 }
