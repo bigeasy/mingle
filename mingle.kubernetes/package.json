@@ -33,7 +33,7 @@
                             "proof":                        "3.0.x",
                             "reactor":                      "10.5.x"
     },
-    "main":                 "kubernetes.argv",
+    "main":                 "kubernetes",
     "scripts":
     {
                             "test": "proof test t/*.t.js"
