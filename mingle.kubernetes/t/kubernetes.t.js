@@ -47,7 +47,7 @@ function prove (okay, callback) {
         port: 'conduit'
     }
 
-    var Resolver = require('../kubernetes.argv')
+    var Resolver = require('../kubernetes')
 
     cadence(function (async) {
         async(function () {
