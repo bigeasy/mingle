@@ -2,7 +2,7 @@
 /docs
 /node_modules
 /*/node_modules/*
-!/mingle.executable/node_modules/mingle.test.js
+!/mingle.olio/node_modules/mingle.test.js
 /.todo.txt
 /.proof.out
 /coverage
