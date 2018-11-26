@@ -27,7 +27,7 @@
     },
     "devDependencies":
     {
-                            "destructible":                 "0.36.x",
+                            "destructible":                 "0.37.x",
                             "interlocutor":                 "0.6.x",
                             "proof":                        "5.0.x",
                             "reactor":                      "10.9.x"
