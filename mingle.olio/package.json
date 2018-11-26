@@ -21,7 +21,7 @@
     "dependencies":
     {
                             "cadence":                      "2.0.x",
-                            "conduit":                      "2.32.x",
+                            "conduit":                      "2.33.x",
                             "destructible":                 "0.36.x",
                             "olio":                         "0.36.x",
                             "reactor":                      "10.9.x"
