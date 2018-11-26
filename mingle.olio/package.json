@@ -23,7 +23,7 @@
                             "cadence":                      "2.0.x",
                             "conduit":                      "2.32.x",
                             "destructible":                 "0.36.x",
-                            "olio":                         "0.35.x",
+                            "olio":                         "0.36.x",
                             "reactor":                      "10.9.x"
     },
     "devDependencies":
