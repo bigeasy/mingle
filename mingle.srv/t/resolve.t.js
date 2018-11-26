@@ -1,6 +1,6 @@
 require('proof')(2, require('cadence')(prove))
 
-function prove (async, assert) {
+function prove (async, okay) {
     var resolve = require('../resolve')
     async(function () {
         resolve({
@@ -9,7 +9,7 @@ function prove (async, assert) {
             }
         }, '', async())
     }, function (addresses) {
-        assert(addresses, [], 'SRV error')
+        okay(addresses, [], 'SRV error')
         resolve({
             resolve: function (name, record, callback) {
                 if (record == 'SRV') {
@@ -20,6 +20,6 @@ function prove (async, assert) {
             }
         }, '', async())
     }, function (addresses) {
-        assert(addresses, [ null ], 'A error')
+        okay(addresses, [ null ], 'A error')
     })
 }
