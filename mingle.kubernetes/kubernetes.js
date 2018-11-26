@@ -2,7 +2,7 @@ var cadence = require('cadence')
 var Interrupt = require('interrupt').createInterrupter('mingle.kubernetes')
 var Resolver = require('./resolver')
 var defaults = require('./defaults')
-var rescue = require('rescue/redux')
+var rescue = require('rescue')
 var fs = require('fs')
 
 module.exports = cadence(function (async, destructible, properties) {
