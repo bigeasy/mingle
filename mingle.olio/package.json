@@ -24,7 +24,7 @@
                             "conduit":                      "2.33.x",
                             "destructible":                 "0.36.x",
                             "olio":                         "0.36.x",
-                            "reactor":                      "10.9.x"
+                            "reactor":                      "10.10.x"
     },
     "devDependencies":
     {
