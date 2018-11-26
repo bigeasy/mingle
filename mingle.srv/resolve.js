@@ -9,16 +9,16 @@ module.exports = cadence(function (async, dns, name, format) {
         logger.error('resolve.SRV', { stack: error.stack })
         return [ async.break, [] ]
     }], function (records) {
-        async.map(function (record) {
-            var block = async([function () {
+        async.map([ records ], function (record) {
+            async.loop([], [function () {
                 dns.resolve(record.name, 'A', async())
             }, function (error) {
                 logger.error('resolve.A', { stack: error.stack, record: record })
-                return [ block.break, null ]
+                return [ async.break, null ]
             }], function (address) {
-                return [ block.break, sprintf(format, address, +record.port) ]
-            })()
-        })(records)
+                return [ async.break, sprintf(format, address, +record.port) ]
+            })
+        })
     }, function (discovered) {
         return [ discovered ]
     })
