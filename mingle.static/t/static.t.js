@@ -12,7 +12,7 @@ function prove (okay, callback) {
 
     cadence(function (async) {
         async(function () {
-            destructible.monitor('resolver', Resolver, {
+            destructible.durable('resolver', Resolver, {
                 format: 'http://%s:%d/',
                 addresses: [ '127.0.0.1:8080' ]
             }, async())
@@ -21,5 +21,5 @@ function prove (okay, callback) {
         }, function (addresses) {
             okay(addresses, [ 'http://127.0.0.1:8080/' ], 'resolve')
         })
-    })(destructible.monitor('test'))
+    })(destructible.durable('test'))
 }
