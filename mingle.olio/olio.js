@@ -7,7 +7,7 @@ function Listener (resolver) {
 }
 
 Listener.prototype.connect = cadence(function (async, destructible, inbox, outbox) {
-    destructible.monitor('conduit', Conduit, inbox, outbox, this, cadence(function (async, request, inbox, outbox) {
+    destructible.durable('conduit', Conduit, inbox, outbox, this, cadence(function (async, request, inbox, outbox) {
         this.resolver.resolve(async())
     }), async())
 })
@@ -15,7 +15,7 @@ Listener.prototype.connect = cadence(function (async, destructible, inbox, outbo
 module.exports = cadence(function (async, destructible, olio, properties) {
     var Resolver = require(properties.module)
     async(function () {
-        destructible.monitor('resolver', Resolver, properties, async())
+        destructible.durable('resolver', Resolver, properties, async())
     }, function (resolver) {
         return new Listener(resolver)
     })
