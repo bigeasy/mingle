@@ -12,7 +12,7 @@ function prove (okay, callback) {
 
     cadence(function (async) {
         async(function () {
-            destructible.monitor('resolver', Resolver, {
+            destructible.durable('resolver', Resolver, {
                 name: '_mingle._tcp.mingle.prettyrobots.com',
                 format: 'http://%s:%d/'
             }, async())
@@ -21,5 +21,5 @@ function prove (okay, callback) {
         }, function (resolved) {
             okay(resolved, [ 'http://52.70.58.47:1337/' ], 'resolved')
         })
-    })(destructible.monitor('test'))
+    })(destructible.durable('test'))
 }
