@@ -14,7 +14,7 @@ function prove (okay, callback) {
 
     cadence(function (async) {
         async(function () {
-            destructible.monitor('mock', Mock, {
+            destructible.durable('mock', Mock, {
                 socket: 't/socket',
                 children: {
                     olio: {
@@ -36,5 +36,5 @@ function prove (okay, callback) {
         }, function (response) {
             okay(response, [ '127.0.0.1:8888' ], 'olio')
         })
-    })(destructible.monitor('test'))
+    })(destructible.durable('test'))
 }

@@ -22,7 +22,7 @@
     {
                             "cadence":                      "2.0.x",
                             "conduit":                      "2.33.x",
-                            "destructible":                 "0.37.x",
+                            "destructible":                 "0.40.x",
                             "olio":                         "0.38.x"
     },
     "devDependencies":
