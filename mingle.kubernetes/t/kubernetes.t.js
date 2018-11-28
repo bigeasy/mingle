@@ -55,20 +55,20 @@ function prove (okay, callback) {
         }, [function () {
             properties.token = path.join(__dirname, 'x')
             var destructible = new Destructible('token')
-            destructible.monitor('resolver', Resolver, properties, async())
+            destructible.durable('resolver', Resolver, properties, async())
         }, function (error) {
             okay(error.label, 'token file not found',  'cannot find token')
         }], [function () {
             properties.token = path.join(__dirname, 'fixtures/token'),
             properties.ca = path.join(__dirname, 'x')
             var destructible = new Destructible('ca')
-            destructible.monitor('resolver', Resolver, properties, async())
+            destructible.durable('resolver', Resolver, properties, async())
         }, function (error) {
             okay(error.label, 'ca file not found', 'cannot find ca file')
         }], function () {
             properties.ca = path.join(__dirname, 'fixtures/certs/ca-cert.pem')
             properties.ua = new UserAgent().bind({ http: new Interlocutor(service.reactor.middleware) })
-            destructible.monitor('resolver', Resolver, properties, async())
+            destructible.durable('resolver', Resolver, properties, async())
         }, function (resolver) {
             async(function () {
                 resolver.resolve(async())
@@ -79,5 +79,5 @@ function prove (okay, callback) {
                 okay(json, [ '10.2.73.7:8486' ], 'select')
             })
         })
-    })(destructible.monitor('test'))
+    })(destructible.durable('test'))
 }
