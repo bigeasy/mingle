@@ -30,7 +30,7 @@ Middleware.prototype.health = cadence(function () {
 module.exports = cadence(function (async, destructible, olio, properties) {
     async(function () {
         olio.sender(coalesce(properties.sibling, 'mingle'), cadence(function (async, destructible, inbox, outbox) {
-            destructible.monitor('conduit', Conduit, inbox, outbox, null, async())
+            destructible.durable('conduit', Conduit, inbox, outbox, null, async())
         }), async())
     }, function (sender) {
         var middleware = new Middleware(sender.processes[0].conduit)
@@ -41,7 +41,7 @@ module.exports = cadence(function (async, destructible, olio, properties) {
             delta(async()).ee(server).on('listening')
             server.listen(properties.port, properties.iface)
         }, function () {
-            delta(destructible.monitor('http')).ee(server).on('close')
+            delta(destructible.durable('http')).ee(server).on('close')
             return []
         })
     })

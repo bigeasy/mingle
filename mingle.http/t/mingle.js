@@ -5,7 +5,7 @@ function Mingle () {
 }
 
 Mingle.prototype.connect = cadence(function (async, destructible, inbox, outbox) {
-    destructible.monitor('conduit', Conduit, inbox, outbox, cadence(function (async, request, inbox, outbox) {
+    destructible.durable('conduit', Conduit, inbox, outbox, cadence(function (async, request, inbox, outbox) {
         return [[ '127.0.0.1:8080' ]]
     }), async())
 })
