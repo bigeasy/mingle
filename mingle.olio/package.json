@@ -21,7 +21,7 @@
     "dependencies":
     {
                             "cadence":                      "2.0.x",
-                            "conduit":                      "2.35.x",
+                            "conduit":                      "2.36.x",
                             "destructible":                 "0.41.x",
                             "olio":                         "0.41.x"
     },
