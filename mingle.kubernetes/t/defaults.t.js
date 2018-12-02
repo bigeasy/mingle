@@ -5,7 +5,6 @@ function prove (okay) {
     okay(defaults({
         ua: {},
         format: 'http://%s:%d/',
-        bind: { address: '0.0.0.0', port: 8888 },
         token: '/home/mingle/token',
         ca: '/home/mingle/ca',
         namespace: 'namespace',
@@ -16,7 +15,6 @@ function prove (okay) {
     }, { ua: {} }), {
         ua: {},
         format: 'http://%s:%d/',
-        bind: { address: '0.0.0.0', port: 8888 },
         token: '/home/mingle/token',
         ca: '/home/mingle/ca',
         namespace: 'namespace',
@@ -27,7 +25,6 @@ function prove (okay) {
     }, 'no defaults')
     okay(defaults({
         ua: {},
-        bind: { address: '0.0.0.0', port: 8888 },
         namespace: 'namespace',
         pod: 'pod',
         container: 'noport',
@@ -35,7 +32,6 @@ function prove (okay) {
     }, { ua: {} }), {
         ua: {},
         format: '%s:%d',
-        bind: { address: '0.0.0.0', port: 8888 },
         token: '/var/run/secrets/kubernetes.io/serviceaccount/token',
         ca: '/var/run/secrets/kubernetes.io/serviceaccount/ca.crt',
         namespace: 'namespace',
