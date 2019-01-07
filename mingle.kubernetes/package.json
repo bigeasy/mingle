@@ -22,7 +22,7 @@
     {
                             "cadence":                      "2.0.x",
                             "sprintf-js":                   "1.1.x",
-                            "rescue":                       "4.2.x",
+                            "rescue":                       "5.0.x",
                             "vizsla":                       "13.0.x"
     },
     "devDependencies":
