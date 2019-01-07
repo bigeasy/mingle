@@ -30,7 +30,7 @@
                             "destructible":                 "0.43.x",
                             "interlocutor":                 "0.7.x",
                             "proof":                        "5.0.x",
-                            "reactor":                      "10.12.x"
+                            "reactor":                      "11.0.x"
     },
     "main":                 "kubernetes",
     "scripts":
