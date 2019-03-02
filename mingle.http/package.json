@@ -22,7 +22,7 @@
     {
                             "cadence":                      "2.0.x",
                             "delta":                        "3.0.x",
-                            "reactor":                      "10.10.x",
+                            "reactor":                      "13.0.x",
                             "server-destroy":               "1.0.1"
     },
     "devDependencies":
