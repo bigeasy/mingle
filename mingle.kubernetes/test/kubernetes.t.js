@@ -2,13 +2,16 @@ require('proof')(4, prove)
 
 function prove (okay, callback) {
     var Destructible = require('destructible')
-    var destructible = new Destructible('t/kubernetes.t')
+    var destructible = new Destructible('test/kubernetes.t')
 
     destructible.completed.wait(callback)
 
     var Reactor = require('reactor')
     var cadence = require('cadence')
     var path = require('path')
+    var children = require('child_process')
+
+    children.execSync('make -C ' + path.join(__dirname, 'fixtures/certs'))
 
     var fs = require('fs')
     var path = require('path')

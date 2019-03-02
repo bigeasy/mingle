@@ -2,7 +2,7 @@ require('proof')(1, prove)
 
 function prove (okay, callback) {
     var Destructible = require('destructible')
-    var destructible = new Destructible('t/olio.t')
+    var destructible = new Destructible('test/olio.t')
 
     var Mock = require('olio/mock')
 
@@ -15,7 +15,7 @@ function prove (okay, callback) {
     cadence(function (async) {
         async(function () {
             destructible.durable('mock', Mock, {
-                socket: 't/socket',
+                socket: path.join(__dirname, 'socket'),
                 children: {
                     olio: {
                         path: path.resolve(__dirname, '../olio.js'),

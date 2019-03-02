@@ -25,6 +25,10 @@
     "main":                 "mingle",
     "scripts":
     {
-                            "test": "platform win32 && proof test */*/*.t.js || t/test"
+                            "test": "proof test */test/*.t.js"
+    },
+    "nyc":
+    {
+                            "exclude": [ "*/test/**" ]
     }
 }

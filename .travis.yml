@@ -15,7 +15,8 @@ branches:
 install:
   - for dir in mingle.*; do (cd $dir && npm install --no-package-lock --no-save); done
   - npm install --no-package-lock --no-save
-  - npm install -g proof istanbul coveralls
+  - npm install -g nyc
   - git checkout .
 
-script: t/test
+script:
+  - nyc npm test

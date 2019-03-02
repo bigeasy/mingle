@@ -7,5 +7,7 @@
 /.proof.out
 /coverage
 */coverage
+/.nyc_output
+/*/.nyc_output
 *.srl
 *.pem
