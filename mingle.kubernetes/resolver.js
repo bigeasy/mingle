@@ -38,6 +38,7 @@ Resolver.prototype._select = function (json) {
     var items = json.items.filter(function (item) {
         return item.metadata.labels.name == pod &&
             item.metadata.deletionTimestamp == null &&
+            item.status.podIP &&
             item.status.containerStatuses &&
             item.status.containerStatuses.filter(function (container) {
                 return container.name == sought.container && container.ready
@@ -48,7 +49,6 @@ Resolver.prototype._select = function (json) {
         var container = item.spec.containers.filter(function (container) {
             return container.name == sought.container
         }).shift()
-        item.status.podIp
         var port = container.ports.filter(function (port) {
             return port.name == sought.port
         }).shift()
