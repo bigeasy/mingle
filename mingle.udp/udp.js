@@ -8,11 +8,11 @@ const events = require('events')
 const dgram = require('dgram')
 
 class UDP extends events.EventEmitter {
-    constructor (interfaces, port, location) {
+    constructor (interfaces, port, where) {
         super()
         this.destroyed = false
         this._port = port
-        this._location = location
+        this._where = where
         this._when = Date.now()
         this._addresses = interfaces.forEach((iface) => {
             return broadcastAddress(require('os').networkInterfaces()[iface])
@@ -30,7 +30,10 @@ class UDP extends events.EventEmitter {
 
     announce () {
         const server = dgram.createSocket('udp4')
-        const message = Buffer.from(JSON.stringify(this._location))
+        const message = Buffer.from(JSON.stringify({
+            when: this._when,
+            where: this._where
+        }))
         server.setBroadcast(true)
         const broadcast = () => {
             this._addresses.forEach(address => {
@@ -54,8 +57,11 @@ class UDP extends events.EventEmitter {
         client.on('message', (message, rinfo) => {
             const json = JSON.parse(message.toString())
             this.emit('announce', {
-                address: json.address || rinfo.address,
-                port: json.port
+                when: json.when,
+                where: {
+                    address: json.where.address || rinfo.address,
+                    port: json.where.port
+                }
             })
         })
         client.bind(this._port)
