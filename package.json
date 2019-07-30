@@ -28,6 +28,6 @@
     },
     "nyc":
     {
-                            "exclude": [ "*/test/**" ]
+                            "exclude": [ "*/test/**", "test.js" ]
     }
 }
