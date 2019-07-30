@@ -22,8 +22,8 @@ describe('olio', () => {
         const exit = once(olio, 'close')
         const [ message ] = await once(olio, 'message')
         assert.equal(message, 'olio:ready', 'ready')
-        const response = await axios.get('http://127.0.0.1:8081/resolve')
-        assert.deepStrictEqual(response.data, [ [ '127.0.0.1:8888' ] ], 'resolve')
+        const discover = await axios.get('http://127.0.0.1:8081/discover')
+        assert.deepStrictEqual(discover.data, [ '127.0.0.1:8888' ], 'discover')
         olio.kill()
         const [ code ] = await exit
         assert.equal(code, 0, 'exit')
