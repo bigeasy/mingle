@@ -20,21 +20,16 @@
     },
     "dependencies":
     {
-                            "cadence":                      "3.0.x",
-                            "delta":                        "3.0.x",
-                            "reactor":                      "14.0.x",
-                            "server-destroy":               "1.0.1"
+                            "fastify":                      "2.7.0"
     },
     "devDependencies":
     {
-                            "destructible":                 "2.0.x",
-                            "olio":                         "4.0.x",
-                            "proof":                        "7.0.x",
-                            "vizsla":                       "14.0.x"
+                            "olio":                         "6.0.x",
+                            "axios":                        "0.19.0"
     },
     "main":                 "olio",
     "scripts":
     {
-                            "test": "proof test test/*.t.js"
+                            "test": "mocha test/*.test.js"
     }
 }
