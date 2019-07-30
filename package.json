@@ -20,12 +20,11 @@
     },
     "devDependencies":
     {
-                            "proof":                        "7.0.x"
     },
     "main":                 "mingle",
     "scripts":
     {
-                            "test": "proof test */test/*.t.js"
+                            "test": "node test.js"
     },
     "nyc":
     {
