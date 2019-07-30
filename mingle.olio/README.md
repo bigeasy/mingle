@@ -1,3 +1,4 @@
-Mingle Supervisor
+# Mingle Olio
 
-Run one of the Mingle discovery processes.
+Run Mingle as an [Olio](http://github.com/bigeasy/olio) constituent exposing the
+resolve function through a [Conduit](https://github.com/bigeasy/conduit).
