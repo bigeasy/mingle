@@ -1,26 +1,22 @@
-var cadence = require('cadence')
-var Interrupt = require('interrupt').createInterrupter('mingle.kubernetes')
-var Resolver = require('./resolver')
-var defaults = require('./defaults')
-var rescue = require('rescue')
-var fs = require('fs')
+const Interrupt = require('interrupt').create('mingle.kubernetes')
+const Resolver = require('./resolver')
+const defaults = require('./defaults')
+const rescue = require('rescue')
+const fs = require('fs').promises
 
-module.exports = cadence(function (async, destructible, properties) {
-    var options = defaults(properties)
-    async(function () {
-        async([function () {
-            fs.readFile(options.token, 'utf8', async())
-        }, rescue(/^code:ENOENT$/, function () {
-            throw new Interrupt('token file not found', { file: options.token })
-        })])
-        async([function () {
-            fs.readFile(options.ca, async())
-        }, rescue(/^code:ENOENT$/, function () {
-            throw new Interrupt('ca file not found', { file: options.ca })
-        })])
-    }, function (token, ca) {
-        options.token = token.replace(/\n$/, '')
-        options.ca = ca
-        return new Resolver(options)
-    })
-})
+async function load (file, message) {
+    try {
+        return await fs.readFile(file, 'utf8')
+    } catch (error) {
+        rescue(/^code:ENOENT$/, () => {
+            throw new Interrupt(message, { file })
+        })(error)
+    }
+}
+
+exports.create = async function (destructible, properties) {
+    const options = defaults(properties, process.env)
+    options.token = (await load(options.token, 'token file not found')).replace(/\n$/, '')
+    options.ca = (await load(options.ca, 'ca file not found'))
+    return new Resolver(options)
+}

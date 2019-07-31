@@ -1,60 +1,60 @@
-var cadence = require('cadence')
-var assert = require('assert')
-var sprintf = require('sprintf-js').sprintf
+const axios = require('axios')
+const assert = require('assert')
+const sprintf = require('sprintf-js').sprintf
+const https = require('https')
 
-function Resolver (options) {
-    this.bind = options.bind
-    this._ua = options.ua
-    this._namespace = options.namespace
-    this._pod = options.pod
-    this._container = options.container
-    this._port = options.port
-    this._format = options.format
-    this._session = {
-        ca: options.ca,
-        token: options.token,
-        url: 'https://' + options.kubernetes
+class Resolver {
+    constructor (options) {
+        this.bind = options.bind
+        this._ua = options.ua
+        this._namespace = options.namespace
+        this._pod = options.pod
+        this._container = options.container
+        this._port = options.port
+        this._format = options.format
+        this._axios = axios.create({
+            headers: {
+                authorization: `Bearer ${Buffer.from(options.token).toString('base64')}`
+            },
+            httpsAgent: new https.Agent({ ca: options.ca })
+        })
+        this._url = `https://${options.kubernetes}/api/v1/namespaces/${this._namespace}/pods`
     }
-}
 
-Resolver.prototype.resolve = cadence(function (async) {
-    async(function () {
-        this._ua.fetch(this._session, {
-            url: '/api/v1/namespaces/' + this._namespace + '/pods',
-            parse: 'json',
-            nullify: true
-        }, async())
-    }, function (body) {
-        return [ this._select(body) ]
-    })
-})
-
-Resolver.prototype._select = function (json) {
-    if (json == null) {
-        return []
+    async resolve () {
+        try {
+            return this._select((await this._axios.get(this._url)).data)
+        } catch (error) {
+            console.log(error.stack)
+            // TODO Log the error.
+            return []
+        }
     }
-    var sought = { pod: this._pod, container: this._container, port: this._port }
-    var pod = this._pod, container = this._container
-    var items = json.items.filter(function (item) {
-        return item.metadata.labels.name == pod &&
-            item.metadata.deletionTimestamp == null &&
-            item.status.podIP &&
-            item.status.containerStatuses &&
-            item.status.containerStatuses.filter(function (container) {
-                return container.name == sought.container && container.ready
-            })
-    })
-    var format = this._format
-    return items.map(function (item) {
-        var container = item.spec.containers.filter(function (container) {
-            return container.name == sought.container
-        }).shift()
-        var port = container.ports.filter(function (port) {
-            return port.name == sought.port
-        }).shift()
-        assert(port, 'cannot find port')
-        return sprintf(format, item.status.podIP, +port.containerPort)
-    })
+
+    _select (json) {
+        const sought = { pod: this._pod, container: this._container, port: this._port }
+        const pod = this._pod, container = this._container
+        const items = json.items.filter(function (item) {
+            return item.metadata.labels.name == pod &&
+                item.metadata.deletionTimestamp == null &&
+                item.status.podIP &&
+                item.status.containerStatuses &&
+                item.status.containerStatuses.filter(function (container) {
+                    return container.name == sought.container && container.ready
+                })
+        })
+        const format = this._format
+        return items.map(function (item) {
+            const container = item.spec.containers.filter(function (container) {
+                return container.name == sought.container
+            }).shift()
+            const port = container.ports.filter(function (port) {
+                return port.name == sought.port
+            }).shift()
+            assert(port, 'cannot find port')
+            return sprintf(format, item.status.podIP, +port.containerPort)
+        })
+    }
 }
 
 module.exports = Resolver
