@@ -1,25 +1,28 @@
-var cadence = require('cadence')
-var logger = require('prolific.logger').createLogger('mingle.srv')
-var sprintf = require('sprintf-js').sprintf
+const logger = require('prolific.logger').createLogger('mingle.srv')
+const sprintf = require('sprintf-js').sprintf
+const callback = require('prospective/callback')
 
-module.exports = cadence(function (async, dns, name, format) {
-    async([function () {
-        dns.resolve(name, 'SRV', async())
-    }, function (error) {
-        logger.error('resolve.SRV', { stack: error.stack })
-        return [ async.break, [] ]
-    }], function (records) {
-        async.map([ records ], function (record) {
-            async.loop([], [function () {
-                dns.resolve(record.name, 'A', async())
-            }, function (error) {
-                logger.error('resolve.A', { stack: error.stack, record: record })
-                return [ async.break, null ]
-            }], function (address) {
-                return [ async.break, sprintf(format, address, +record.port) ]
-            })
-        })
-    }, function (discovered) {
-        return [ discovered ]
-    })
-})
+async function resolve (dns, name, type) {
+    try {
+        const [ record ] = await callback(callback => dns.resolve(name, type, callback))
+        return record
+    } catch (error) {
+        console.log(error.stack)
+        logger.error('dns', { type, stack: error.stack })
+        throw error
+    }
+}
+
+module.exports = async function (dns, name, format) {
+    try {
+        const resolved = []
+        const records = await resolve(dns, name, 'SRV')
+        for (const record of records) {
+              const address = await resolve(dns, record.name, 'A')
+              resolved.push(sprintf(format, address, +record.port))
+        }
+        return resolved
+    } catch (error) {
+        return []
+    }
+}
