@@ -1,6 +1,4 @@
-var Keyify = require('keyify')
-
-function keyify (value) { return Keyify.stringify(value) }
+const Keyify = require('keyify')
 
 module.exports = function (previous, next) {
     if (previous.length == 0 || next.length == 0) {
@@ -9,8 +7,8 @@ module.exports = function (previous, next) {
     if (previous.length != next.length) {
         return false
     }
-    var verify = previous.map(keyify).sort()
-    return next.map(keyify).sort().filter(function (value, index) {
+    const verify = previous.map(Keyify.stringify).sort()
+    return next.map(Keyify.stringify).sort().filter(function (value, index) {
         return verify[index] == value
     }).length == verify.length
 }
