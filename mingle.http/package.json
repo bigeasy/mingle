@@ -1,6 +1,6 @@
 {
     "name":                 "mingle.http",
-    "version":              "2.0.1",
+    "version":              "4.0.0",
     "description":
 
       "HTTP interface to Mingle service discovery.",
