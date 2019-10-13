@@ -24,12 +24,13 @@
     },
     "devDependencies":
     {
+                            "axios":                        "0.19.0",
                             "olio":                         "6.0.x",
-                            "axios":                        "0.19.0"
+                            "proof":                        "8.0.0-alpha.8"
     },
     "main":                 "olio",
     "scripts":
     {
-                            "test": "mocha test/*.test.js"
+                            "test": "proof test/*.test.js"
     }
 }
