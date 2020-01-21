@@ -26,7 +26,8 @@
     {
                             "axios":                        "0.19.1",
                             "olio":                         "6.0.x",
-                            "proof":                        "8.0.0-alpha.8"
+                            "proof":                        "8.0.0-alpha.8",
+                            "prospective":                  "0.2.0"
     },
     "main":                 "olio",
     "scripts":
