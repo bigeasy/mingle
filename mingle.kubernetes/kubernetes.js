@@ -8,9 +8,10 @@ async function load (file, message) {
     try {
         return await fs.readFile(file, 'utf8')
     } catch (error) {
-        rescue(/^code:ENOENT$/, () => {
+        console.log(error.code)
+        rescue(error, [{ code: 'ENOENT' }], () => {
             throw new Interrupt(message, { file })
-        })(error)
+        })
     }
 }
 
