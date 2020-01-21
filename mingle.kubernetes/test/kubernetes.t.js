@@ -1,4 +1,4 @@
-describe('kubernetes', () => {
+require('proof')(4, async (okay) => {
     const assert = require('assert')
     const fs = require('fs')
     const path = require('path')
@@ -33,19 +33,18 @@ describe('kubernetes', () => {
         port: 'conduit'
     }
 
-    before(async () => await fastify.listen(8081))
-    after(async () => await fastify.close())
-    it('can raise token file not found', async () => {
+    await fastify.listen(8081)
+    {
         properties.token = path.join(__dirname, 'x')
         const Destructible = require('destructible')
         const destructible = new Destructible('token')
         try {
             await require('../kubernetes').create(destructible, properties)
         } catch (error) {
-            assert.equal(error.label, 'token file not found', 'token file not found')
+            okay(error.label, 'token file not found', 'token file not found')
         }
-    })
-    it('can raise ca file not found', async () => {
+    }
+    {
         properties.token = path.join(__dirname, 'fixtures/token'),
         properties.ca = path.join(__dirname, 'x')
         const Destructible = require('destructible')
@@ -53,16 +52,17 @@ describe('kubernetes', () => {
         try {
             await require('../kubernetes').create(destructible, properties)
         } catch (error) {
-            assert.equal(error.label, 'ca file not found', 'ca file not found')
+            okay(error.label, 'ca file not found', 'ca file not found')
         }
-    })
-    it('can discover', async () => {
         properties.token = path.join(__dirname, 'fixtures/token'),
         properties.ca = path.join(__dirname, 'fixtures/certs/ca-cert.pem')
+    }
+    {
         const Destructible = require('destructible')
         const destructible = new Destructible('discover')
         const resolver = await require('../kubernetes').create(destructible, properties)
-        assert.deepStrictEqual((await resolver.resolve()), [], 'error')
-        assert.deepStrictEqual((await resolver.resolve()), [ '10.2.73.7:8486' ], 'discover')
-    })
+        okay(await resolver.resolve(), [], 'error')
+        okay(await resolver.resolve(), [ '10.2.73.7:8486' ], 'discover')
+    }
+    await fastify.close()
 })
