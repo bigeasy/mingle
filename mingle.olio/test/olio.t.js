@@ -17,8 +17,8 @@ require('proof')(3, async (okay) => {
     ], {
         stdio: [ 'inherit', 'inherit', 'inherit', 'ipc' ]
     })
-    const exit = once(olio, 'close')
-    const [ message ] = await once(olio, 'message')
+    const exit = once(olio, 'close').promise
+    const [ message ] = await once(olio, 'message').promise
     okay(message, 'olio:ready', 'ready')
     const discover = await axios.get('http://127.0.0.1:8081/discover')
     okay(discover.data, [ '127.0.0.1:8888' ], 'discover')
