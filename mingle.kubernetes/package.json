@@ -20,7 +20,7 @@
     },
     "dependencies":
     {
-                            "interrupt":                    "8.0.x",
+                            "interrupt":                    "9.0.0-alpha.4",
                             "sprintf-js":                   "1.1.x",
                             "rescue":                       "5.0.x"
     },
