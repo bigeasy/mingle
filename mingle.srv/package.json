@@ -22,7 +22,7 @@
     {
                             "extant":                       "1.0.x",
                             "prolific.logger":              "10.0.x",
-                            "prospective":                  "0.0.x",
+                            "prospective":                  "0.1.0-alpha.4",
                             "sprintf-js":                   "1.1.x"
     },
     "devDependencies":
