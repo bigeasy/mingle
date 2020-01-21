@@ -17,8 +17,8 @@ require('proof')(4, async (okay) => {
     ], {
         stdio: [ 'inherit', 'inherit', 'inherit', 'ipc' ]
     })
-    const exit = once(olio, 'close')
-    const [ message ] = await once(olio, 'message')
+    const exit = once(olio, 'close').promise
+    const [ message ] = await once(olio, 'message').promise
     okay(message, 'olio:ready', 'ready')
     const index = await axios.get('http://127.0.0.1:8081/')
     okay(index.data, 'Mingle API\n', 'index')
