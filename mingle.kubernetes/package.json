@@ -27,7 +27,7 @@
     "devDependencies":
     {
                             "axios":                        "0.21.1",
-                            "destructible":                 "5.2.0-alpha.4",
+                            "destructible":                 "7.0.0-alpha.48",
                             "fastify":                      "2.11.0",
                             "http-errors":                  "1.8.0",
                             "proof":                        "8.0.0-alpha.8"
