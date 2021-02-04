@@ -20,7 +20,7 @@
     },
     "dependencies":
     {
-                            "keyify":                       "2.0.x"
+                            "keyify":                       "2.0.6"
     },
     "devDependencies":
     {
