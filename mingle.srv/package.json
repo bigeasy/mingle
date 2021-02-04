@@ -21,7 +21,7 @@
     "dependencies":
     {
                             "extant":                       "2.0.0-alpha.0",
-                            "prolific.logger":              "11.0.1",
+                            "prolific.logger":              "11.0.3",
                             "prospective":                  "0.4.1",
                             "sprintf-js":                   "1.1.x"
     },
