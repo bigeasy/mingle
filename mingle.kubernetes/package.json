@@ -21,7 +21,7 @@
     "dependencies":
     {
                             "interrupt":                    "9.0.0-alpha.4",
-                            "rescue":                       "6.0.3",
+                            "rescue":                       "7.0.0-alpha.11",
                             "sprintf-js":                   "1.1.x"
     },
     "devDependencies":
