@@ -1,4 +1,4 @@
-const coalesce = require('extant')
+const { coalesce } = require('extant')
 const dns = require('dns')
 const resolve = require('./resolve')
 
