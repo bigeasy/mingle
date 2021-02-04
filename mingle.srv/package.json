@@ -28,7 +28,7 @@
     "devDependencies":
     {
                             "destructible":                 "7.0.0-alpha.48",
-                            "proof":                        "8.0.0-alpha.8"
+                            "proof":                        "9.0.3"
     },
     "main":                 "srv",
     "scripts":
