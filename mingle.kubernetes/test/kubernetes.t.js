@@ -41,7 +41,7 @@ require('proof')(4, async (okay) => {
         try {
             await require('../kubernetes').create(destructible, properties)
         } catch (error) {
-            okay(error.label, 'token file not found', 'token file not found')
+            okay(error.code, 'FILE_NOT_FOUND', 'token file not found')
         }
     }
     {
@@ -52,7 +52,7 @@ require('proof')(4, async (okay) => {
         try {
             await require('../kubernetes').create(destructible, properties)
         } catch (error) {
-            okay(error.label, 'ca file not found', 'ca file not found')
+            okay(error.code, 'FILE_NOT_FOUND', 'ca file not found')
         }
         properties.token = path.join(__dirname, 'fixtures/token'),
         properties.ca = path.join(__dirname, 'fixtures/certs/ca-cert.pem')
