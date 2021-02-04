@@ -30,7 +30,7 @@
                             "destructible":                 "7.0.0-alpha.48",
                             "fastify":                      "3.11.0",
                             "http-errors":                  "1.8.0",
-                            "proof":                        "8.0.0-alpha.8"
+                            "proof":                        "9.0.3"
     },
     "main":                 "kubernetes",
     "scripts":
