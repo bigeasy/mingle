@@ -1,4 +1,4 @@
-const coalesce = require('extant')
+const { coalesce } = require('extant')
 const sprintf = require('sprintf-js').sprintf
 
 class Resolver {
