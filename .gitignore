@@ -4,7 +4,6 @@
 /*/node_modules/*
 !/mingle.olio/node_modules/mingle.test.js
 /.todo.txt
-/.proof.out
 /coverage
 */coverage
 /.nyc_output
