@@ -11,6 +11,7 @@ fs.readdirSync(__dirname)
     if (tests.filter(test => /\.t\.js$/.test(test)).length != 0) {
         const spawn = child.spawnSync('npm', [ 'test' ], { cwd: path.join(__dirname, dir), stdio: 'inherit' })
         if (spawn.status != 0) {
+            console.log('failed', path.join(__dirname, dir))
             process.exit(1)
         }
     }
