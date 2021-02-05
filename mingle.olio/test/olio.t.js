@@ -1,6 +1,6 @@
 require('proof')(3, async (okay) => {
     const fs = require('fs').promises
-    const once = require('prospective/once')
+    const once = require('eject')
     const path = require('path')
     const children = require('child_process')
     const axios = require('axios')

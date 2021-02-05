@@ -27,7 +27,7 @@
                             "axios":                        "0.21.1",
                             "fastify":                      "3.11.0",
                             "proof":                        "^9.0.3",
-                            "prospective":                  "0.4.1"
+                            "eject":                        "0.2.3"
     },
     "main":                 "olio",
     "scripts":
