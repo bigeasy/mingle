@@ -1,6 +1,6 @@
 {
     "name":                 "mingle",
-    "version":              "6.1.1",
+    "version":              "7.0.0-alpha.0",
     "description":
 
       "Root executable for standard Mingle processes.",
@@ -25,9 +25,9 @@
     "devDependencies":
     {
                             "axios":                        "0.21.1",
+                            "eject":                        "0.2.3",
                             "fastify":                      "3.11.0",
-                            "proof":                        "^9.0.3",
-                            "eject":                        "0.2.3"
+                            "proof":                        "^9.0.3"
     },
     "main":                 "olio",
     "scripts":
