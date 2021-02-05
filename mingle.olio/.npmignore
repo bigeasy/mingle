@@ -1,6 +1,7 @@
-/.*
-/*.md
+/.git
+/.gitignore
+/.proof.out
+/.tmux.run.sh
 /coverage
-/docs
 /node_modules
 /test
