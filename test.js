@@ -16,3 +16,5 @@ fs.readdirSync(__dirname)
         }
     }
 })
+
+console.log('YES I DID FINISH')
