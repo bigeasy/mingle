@@ -33,5 +33,11 @@
     "scripts":
     {
                             "test": "proof test/*.t.js"
+    },
+    "dots":
+    {
+                            "path":                         "mingle/mingle.olio",
+                            "prefix":                       "mingle",
+                            "title":                        "Mingle"
     }
 }
