@@ -26,7 +26,7 @@
     {
                             "axios":                        "0.21.1",
                             "eject":                        "0.2.3",
-                            "fastify":                      "3.11.0",
+                            "fastify":                      "3.12.0",
                             "proof":                        "^9.0.3"
     },
     "main":                 "olio",
