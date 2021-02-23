@@ -24,7 +24,7 @@ jobs:
     - name: npm install nyc, prove, codecov
       run:  npm install -g nyc prove codecov
     - name: npm test
-      run: nyc npm test
+      run: for dir in mingle.*; do (cd $dir && [ -e package.json ] && nyc npm test || true); done && git checkout .
       env:
         CI: true
     - name: generate codecov report
