@@ -15,4 +15,4 @@ install:
   - npm install -g nyc prove
 
 script:
-  - nyc npm test
+  - for dir in mingle.*; do (cd $dir && [ -e package.json ] && nyc npm test || true); done && git checkout .
