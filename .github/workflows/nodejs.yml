@@ -27,6 +27,8 @@ jobs:
       run: bash -c 'for dir in mingle.*; do (cd $dir && { [[ ! -e package.json || -e skip ]] && true; } || npm test) || exit 1; done'
       env:
         CI: true
+    - name: find
+      run: find .
     - name: generate codecov report
       run: nyc report --reporter=text-lcov > coverage.lcov
     - name: ship coverage to codecov
