@@ -3,7 +3,7 @@ const defaults = require('./defaults')
 const rescue = require('rescue')
 const fs = require('fs').promises
 
-const { Interrupt } = require('interrupt')
+const Interrupt = require('interrupt')
 
 class Mingle {
     static Kubernetes = class {
