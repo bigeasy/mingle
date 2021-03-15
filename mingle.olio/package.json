@@ -20,7 +20,7 @@
     },
     "dependencies":
     {
-                            "olio":                         "7.0.0-alpha.6"
+                            "olio":                         "7.0.0-alpha.7"
     },
     "devDependencies":
     {
