@@ -20,7 +20,7 @@
     },
     "dependencies":
     {
-                            "comeuppance":                  "0.0.1",
+                            "comeuppance":                  "0.0.3",
                             "extant":                       "2.0.0-alpha.0",
                             "prolific.logger":              "11.0.3",
                             "sprintf-js":                   "1.1.2"
