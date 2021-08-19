@@ -1,6 +1,6 @@
 const logger = require('prolific.logger').create('mingle.srv')
 const sprintf = require('sprintf-js').sprintf
-const callback = require('comeuppance')
+const { callback } = require('comeuppance')
 
 async function resolve (dns, name, type) {
     try {
