@@ -22,7 +22,7 @@
     {
                             "comeuppance":                  "0.0.3",
                             "extant":                       "2.0.0-alpha.3",
-                            "prolific.logger":              "11.0.3",
+                            "prolific.logger":              "11.0.4",
                             "sprintf-js":                   "1.1.2"
     },
     "devDependencies":
