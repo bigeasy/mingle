@@ -28,7 +28,7 @@
     {
                             "axios":                        "0.23.0",
                             "destructible":                 "7.0.0-alpha.71",
-                            "fastify":                      "3.20.2",
+                            "fastify":                      "3.22.0",
                             "http-errors":                  "1.8.0",
                             "proof":                        "9.0.3"
     },
