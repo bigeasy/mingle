@@ -24,7 +24,7 @@
     },
     "devDependencies":
     {
-                            "axios":                        "0.21.1",
+                            "axios":                        "1.6.0",
                             "olio":                         "7.0.0-alpha.5",
                             "proof":                        "9.0.3",
                             "prospective":                  "0.4.1"
